@@ -89,9 +89,20 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                 validator: (value) => value != null && value.length < 6
                     ? 'Enter min. 6 characters.'
                     : null,
+                obscureText: true,
               ),
               const SizedBox(
                 height: 4,
+              ),
+              TextFormField(
+                cursorColor: Colors.white,
+                textInputAction: TextInputAction.next,
+                decoration: const InputDecoration(labelText: 'Repeat Password'),
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) => value != passwordController.text
+                    ? 'Password don´t match'
+                    : null,
+                obscureText: true,
               ),
               const SizedBox(
                 height: 20,

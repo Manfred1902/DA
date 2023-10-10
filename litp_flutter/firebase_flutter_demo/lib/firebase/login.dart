@@ -51,7 +51,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               height: 20,
             ),
             const Text(
-              'Hey ..., \n Welcome Back!',
+              'Welcome Back!',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 32,
@@ -74,7 +74,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             ),
             TextField(
               controller: passwordController,
-              textInputAction: TextInputAction.done,
+              textInputAction: TextInputAction.next,
               decoration: const InputDecoration(
                 labelText: 'Password',
               ),
@@ -105,14 +105,15 @@ class _LoginWidgetState extends State<LoginWidget> {
             GestureDetector(
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute(
-                    builder: (context) => const ForgotPasswordPage()),
+                  builder: (context) => const ForgotPasswordPage(),
+                ),
               ),
               child: Text(
                 'Forgot Password?',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                   color: Theme.of(context).colorScheme.secondary,
-                  fontSize: 20,
+                  fontSize: 16,
                 ),
               ),
             ),
@@ -121,7 +122,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               text: TextSpan(
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 16,
                 ),
                 text: 'No account? ',
                 children: [
