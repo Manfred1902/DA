@@ -5,8 +5,10 @@ import 'package:firebase_flutter_demo/util/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 import '../util/logger.util.dart';
+import '../util/theme-switcher.dart';
 
 class SignUpWidget extends StatefulWidget {
   final Function() onClickedSignIn;
@@ -35,119 +37,130 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   }
 
   @override
-  Widget build(BuildContext context) => SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 60,
+  Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16),
+      child: Form(
+        key: formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(
+              height: 16,
+            ),
+            IconButton(
+              onPressed: themeProvider.toggleTheme,
+              icon: const Icon(Icons.wb_sunny),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            SvgPicture.asset(
+              'assets/logo.svg',
+              height: 200,
+              width: 200,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              'Welcome to our App!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
               ),
-              SvgPicture.asset(
-                'assets/logo.svg',
-                height: 200,
-                width: 200,
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            TextFormField(
+              controller: emailController,
+              cursorColor: Colors.white,
+              textInputAction: TextInputAction.next,
+              decoration: const InputDecoration(
+                labelText: 'Email',
               ),
-              const SizedBox(
-                height: 20,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (email) =>
+                  email != null && !EmailValidator.validate(email)
+                      ? 'Enter a valid email'
+                      : null,
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            TextFormField(
+              controller: passwordController,
+              cursorColor: Colors.white,
+              textInputAction: TextInputAction.next,
+              decoration: const InputDecoration(labelText: 'Password'),
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value) => value != null && value.length < 6
+                  ? 'Enter min. 6 characters.'
+                  : null,
+              obscureText: true,
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            TextFormField(
+              cursorColor: Colors.white,
+              textInputAction: TextInputAction.next,
+              decoration: const InputDecoration(labelText: 'Repeat Password'),
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value) => value != passwordController.text
+                  ? 'Password don´t match'
+                  : null,
+              obscureText: true,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size.fromHeight(50),
               ),
-              const Text(
-                'Welcome to our App!',
-                textAlign: TextAlign.center,
+              icon: const Icon(
+                Icons.arrow_forward,
+                size: 32,
+              ),
+              label: const Text(
+                'Sign Up',
+                style: TextStyle(fontSize: 24),
+              ),
+              onPressed: signUp,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text.rich(
+              TextSpan(
                 style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 16,
                 ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              TextFormField(
-                controller: emailController,
-                cursorColor: Colors.white,
-                textInputAction: TextInputAction.next,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                ),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (email) =>
-                    email != null && !EmailValidator.validate(email)
-                        ? 'Enter a valid email'
-                        : null,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              TextFormField(
-                controller: passwordController,
-                cursorColor: Colors.white,
-                textInputAction: TextInputAction.next,
-                decoration: const InputDecoration(labelText: 'Password'),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => value != null && value.length < 6
-                    ? 'Enter min. 6 characters.'
-                    : null,
-                obscureText: true,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              TextFormField(
-                cursorColor: Colors.white,
-                textInputAction: TextInputAction.next,
-                decoration: const InputDecoration(labelText: 'Repeat Password'),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => value != passwordController.text
-                    ? 'Password don´t match'
-                    : null,
-                obscureText: true,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(50),
-                ),
-                icon: const Icon(
-                  Icons.arrow_forward,
-                  size: 32,
-                ),
-                label: const Text(
-                  'Sign Up',
-                  style: TextStyle(fontSize: 24),
-                ),
-                onPressed: signUp,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                  text: 'Already have an account?  ',
-                  children: [
-                    TextSpan(
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = widget.onClickedSignIn,
-                      text: 'Log In',
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
+                text: 'Already have an account?  ',
+                children: [
+                  TextSpan(
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = widget.onClickedSignIn,
+                    text: 'Log In',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
+      ),
+    );
+  }
 
   Future signUp() async {
     final isValid = formKey.currentState!.validate();

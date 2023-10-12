@@ -1,20 +1,53 @@
-# firebase_flutter_demo
+# LITP - Life in third person
 
-A new Flutter project. Java and Swift.
+A application for your drone!
 
-## Getting Started
+## Table of Contents
 
-This project is a starting point for a Flutter application.
+- [About the Project](#about-the-project)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Code Examples](#code-examples)
+- [Documentation](#documentation)
+- [Sources](#sources)
+- [Contributors](#contributors)
+- [License](#license)
 
-A few resources to get you started if this is your first Flutter project:
+## About the Project
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This Flutter project has been developed to manage drone data using Firebase, allowing for real-time collection, storage, and visualization of drone data.
 
-https://firebase.google.com/docs/auth?hl=de
-https://pub.dev/packages/firebase_auth
+## Prerequisites
 
+To use this project, you will need:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Flutter](https://flutter.dev/)
+- [Firebase](https://firebase.google.com/)
+- [DJI](www.google.com)
+- [Dark- Light mode switch](https://stackoverflow.com/questions/60232070/how-to-implement-dark-mode-and-light-mode-in-flutter)
+- [Language switcher](https://stackoverflow.com/questions/65307961/button-to-change-the-language-flutter)
+- [Easy language switcher](https://pub.dev/packages/easy_localization)
+- [Recaptcha 1](https://pub.dev/packages/grecaptcha)
+- [Recaptcha 2](https://www.youtube.com/watch?v=wqmGZ0IUNdI&t=202s)
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/flutter-firebase-drones.git
+cd flutter-firebase-drones
+```
+
+2. install dependencies:
+
+```bash
+flutter pub get
+```
+
+3. Run project:
+
+```bash
+flutter run
+```

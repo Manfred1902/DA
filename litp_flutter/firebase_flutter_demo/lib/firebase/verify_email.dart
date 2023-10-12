@@ -3,6 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_flutter_demo/home.dart';
 import 'package:firebase_flutter_demo/util/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+
+import '../util/theme-switcher.dart';
 
 class VerifyEmailPage extends StatefulWidget {
   const VerifyEmailPage({super.key});
@@ -65,56 +69,75 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   }
 
   @override
-  Widget build(BuildContext context) => isEmailVerified
-      ? HomePage()
-      : Scaffold(
-          appBar: AppBar(
-            title: const Text('Verify Email'),
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'A verification email has been sent to your email.',
-                  style: TextStyle(fontSize: 20),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size.fromHeight(50),
+  Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
+    return isEmailVerified
+        ? HomePage()
+        : Scaffold(
+            body: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 16,
                   ),
-                  icon: const Icon(
-                    Icons.email,
-                    size: 32,
+                  IconButton(
+                    onPressed: themeProvider.toggleTheme,
+                    icon: const Icon(Icons.wb_sunny),
                   ),
-                  label: const Text(
-                    'Resent Email',
-                    style: TextStyle(
-                      fontSize: 24,
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SvgPicture.asset(
+                    'assets/logo.svg',
+                    height: 200,
+                    width: 200,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    'A verification email has been sent to your email.',
+                    style: TextStyle(fontSize: 20),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(50),
                     ),
+                    icon: const Icon(
+                      Icons.email,
+                      size: 32,
+                    ),
+                    label: const Text(
+                      'Resent Email',
+                      style: TextStyle(
+                        fontSize: 24,
+                      ),
+                    ),
+                    onPressed: canResendEmail ? sendVerificationEmail : null,
                   ),
-                  onPressed: canResendEmail ? sendVerificationEmail : null,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                TextButton(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size.fromHeight(50),
+                  const SizedBox(
+                    height: 8,
                   ),
-                  child: const Text(
-                    'Cancel',
-                    style: TextStyle(fontSize: 24),
+                  TextButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(50),
+                    ),
+                    child: const Text(
+                      'Cancel',
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    onPressed: () => FirebaseAuth.instance.signOut(),
                   ),
-                  onPressed: () => FirebaseAuth.instance.signOut(),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
+          );
+  }
 }

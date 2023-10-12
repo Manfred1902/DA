@@ -1,16 +1,28 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_flutter_demo/util/theme-switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         title: const Text(
           'Home',
         ),
+        actions: [
+          IconButton(
+            onPressed: themeProvider.toggleTheme,
+            icon: const Icon(Icons.wb_sunny),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(32),
