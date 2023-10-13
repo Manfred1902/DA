@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_flutter_demo/util/theme-switcher.dart';
+import 'package:firebase_flutter_demo/util/theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

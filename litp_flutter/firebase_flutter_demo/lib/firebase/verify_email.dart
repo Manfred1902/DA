@@ -5,8 +5,9 @@ import 'package:firebase_flutter_demo/util/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../util/theme-switcher.dart';
+import '../util/theme_switcher.dart';
 
 class VerifyEmailPage extends StatefulWidget {
   const VerifyEmailPage({super.key});
@@ -98,9 +99,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    'A verification email has been sent to your email.',
-                    style: TextStyle(fontSize: 20),
+                  Text(
+                    AppLocalizations.of(context)!.verification_email,
+                    style: const TextStyle(fontSize: 20),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(
@@ -114,9 +115,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                       Icons.email,
                       size: 32,
                     ),
-                    label: const Text(
-                      'Resent Email',
-                      style: TextStyle(
+                    label: Text(
+                      AppLocalizations.of(context)!.resent_email,
+                      style: const TextStyle(
                         fontSize: 24,
                       ),
                     ),
@@ -129,9 +130,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size.fromHeight(50),
                     ),
-                    child: const Text(
-                      'Cancel',
-                      style: TextStyle(fontSize: 24),
+                    child: Text(
+                      AppLocalizations.of(context)!.cancel,
+                      style: const TextStyle(fontSize: 24),
                     ),
                     onPressed: () => FirebaseAuth.instance.signOut(),
                   ),

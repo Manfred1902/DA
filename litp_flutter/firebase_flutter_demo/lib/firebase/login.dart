@@ -1,12 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_flutter_demo/firebase/forgot_password.dart';
-import 'package:firebase_flutter_demo/util/theme-switcher.dart';
+import 'package:firebase_flutter_demo/util/theme_switcher.dart';
 import 'package:firebase_flutter_demo/util/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../pages/language_picker.dart';
 import '../util/logger.util.dart';
 import '../main.dart';
 
@@ -62,14 +64,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           const SizedBox(
             height: 20,
           ),
-          const Text(
-            'Welcome Back!',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          const LanguageSelection(),
           const SizedBox(
             height: 40,
           ),
@@ -77,8 +72,8 @@ class _LoginWidgetState extends State<LoginWidget> {
             controller: emailController,
             cursorColor: Colors.white,
             textInputAction: TextInputAction.next,
-            decoration: const InputDecoration(
-              labelText: 'Email',
+            decoration: InputDecoration(
+              labelText: AppLocalizations.of(context)!.email,
             ),
           ),
           const SizedBox(
@@ -87,8 +82,8 @@ class _LoginWidgetState extends State<LoginWidget> {
           TextField(
             controller: passwordController,
             textInputAction: TextInputAction.next,
-            decoration: const InputDecoration(
-              labelText: 'Password',
+            decoration: InputDecoration(
+              labelText: AppLocalizations.of(context)!.password,
             ),
             obscureText: true,
           ),
@@ -103,9 +98,9 @@ class _LoginWidgetState extends State<LoginWidget> {
               Icons.lock_open,
               size: 32,
             ),
-            label: const Text(
-              'Sign In',
-              style: TextStyle(
+            label: Text(
+              AppLocalizations.of(context)!.log_in,
+              style: const TextStyle(
                 fontSize: 24,
               ),
             ),
@@ -121,7 +116,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               ),
             ),
             child: Text(
-              'Forgot Password?',
+              AppLocalizations.of(context)!.forgot_password,
               style: TextStyle(
                 decoration: TextDecoration.underline,
                 color: Theme.of(context).colorScheme.secondary,
@@ -138,12 +133,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                 color: Theme.of(context).colorScheme.primary,
                 fontSize: 16,
               ),
-              text: 'No account? ',
+              text: AppLocalizations.of(context)!.no_account,
               children: [
                 TextSpan(
                   recognizer: TapGestureRecognizer()
                     ..onTap = widget.onClickedSignUp,
-                  text: 'Sign Up',
+                  text: AppLocalizations.of(context)!.sign_up,
                   style: TextStyle(
                     decoration: TextDecoration.underline,
                     color: Theme.of(context).colorScheme.secondary,

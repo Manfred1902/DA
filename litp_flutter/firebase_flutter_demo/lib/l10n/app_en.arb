@@ -1,0 +1,20 @@
+{
+    "language": "English",
+    "email": "E-mail",
+    "password": "Password",
+    "forgot_password": "Forgot Password? ",
+    "log_in": "Log In",
+    "sign_up": "Sign up",
+    "no_account": "No account? ",
+    "already_have_an_account": "Already have an account? ",
+    "verification_email": "A verification email has been sent to your email.",
+    "cancel": "Cancel",
+    "resent_email": "Resent Email",
+    "select_language": "Select Language",
+    "repeat_password": "Repeat Password",
+    "password_match": "Password don´t match",
+    "min_of_six_chars": "Enter min. 6 characters.",
+    "valid_email": "Enter a valid email",
+    "reset_password_send": "Password Reset Email Sent",
+    "receive_email": "Receive an email to\nreset your password."
+}

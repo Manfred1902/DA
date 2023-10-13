@@ -1,0 +1,20 @@
+{
+  "language": "Deutsch",
+  "email": "E-Mail",
+  "password": "Passwort",
+  "forgot_password": "Password vergessen? ",
+  "log_in": "Anmelden",
+  "sign_up": "Registrieren",
+  "no_account": "Kein Konto? ",
+  "already_have_an_account": "Haben Sie bereits ein Konto? ",
+  "verification_email": "Eine Bestätigungs-E-Mail wurde an Ihre E-Mail-Adresse gesendet.",
+  "cancel": "Abbrechen",
+  "resent_email": "E-Mail erneut senden",
+  "select_language": "Sprache auswählen",
+  "repeat_password": "Passwort wiederholen",
+  "password_match": "Passwörter stimmt nicht überein",
+  "min_of_six_chars": "Geben Sie mind. 6 Zeichen ein.",
+  "valid_email": "Geben Sie eine gültige E-Mail ein",
+  "reset_password_send": "E-Mail zur Kennwortrücksetzung gesendet",
+  "receive_email": "Sie erhalten eine E-Mail zum\nPasswort zurückzusetzen."
+}

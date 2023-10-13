@@ -6,9 +6,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../pages/language_picker.dart';
 import '../util/logger.util.dart';
-import '../util/theme-switcher.dart';
+import '../util/theme_switcher.dart';
 
 class SignUpWidget extends StatefulWidget {
   final Function() onClickedSignIn;
@@ -65,14 +67,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
             const SizedBox(
               height: 20,
             ),
-            const Text(
-              'Welcome to our App!',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            const LanguageSelection(),
             const SizedBox(
               height: 40,
             ),
@@ -80,13 +75,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
               controller: emailController,
               cursorColor: Colors.white,
               textInputAction: TextInputAction.next,
-              decoration: const InputDecoration(
-                labelText: 'Email',
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.email,
               ),
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (email) =>
                   email != null && !EmailValidator.validate(email)
-                      ? 'Enter a valid email'
+                      ? AppLocalizations.of(context)!.valid_email
                       : null,
             ),
             const SizedBox(
@@ -96,10 +91,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
               controller: passwordController,
               cursorColor: Colors.white,
               textInputAction: TextInputAction.next,
-              decoration: const InputDecoration(labelText: 'Password'),
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.password,
+              ),
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) => value != null && value.length < 6
-                  ? 'Enter min. 6 characters.'
+                  ? AppLocalizations.of(context)!.min_of_six_chars
                   : null,
               obscureText: true,
             ),
@@ -109,10 +106,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
             TextFormField(
               cursorColor: Colors.white,
               textInputAction: TextInputAction.next,
-              decoration: const InputDecoration(labelText: 'Repeat Password'),
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.repeat_password,
+              ),
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) => value != passwordController.text
-                  ? 'Password don´t match'
+                  ? AppLocalizations.of(context)!.password_match
                   : null,
               obscureText: true,
             ),
@@ -127,9 +126,9 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                 Icons.arrow_forward,
                 size: 32,
               ),
-              label: const Text(
-                'Sign Up',
-                style: TextStyle(fontSize: 24),
+              label: Text(
+                AppLocalizations.of(context)!.sign_up,
+                style: const TextStyle(fontSize: 24),
               ),
               onPressed: signUp,
             ),
@@ -142,12 +141,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                   color: Theme.of(context).colorScheme.primary,
                   fontSize: 16,
                 ),
-                text: 'Already have an account?  ',
+                text: AppLocalizations.of(context)!.already_have_an_account,
                 children: [
                   TextSpan(
                     recognizer: TapGestureRecognizer()
                       ..onTap = widget.onClickedSignIn,
-                    text: 'Log In',
+                    text: AppLocalizations.of(context)!.log_in,
                     style: TextStyle(
                       decoration: TextDecoration.underline,
                       color: Theme.of(context).colorScheme.secondary,
