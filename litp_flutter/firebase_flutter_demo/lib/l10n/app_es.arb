@@ -1,0 +1,20 @@
+{
+  "language": "Español",
+  "email": "E-mail",
+  "password": "Contraseña",
+  "forgot_password": "¿Ha olvidado su contraseña? ",
+  "log_in": "Conectarse",
+  "sign_up": "Regístrate",
+  "no_account": "¿No tiene cuenta? ",
+  "already_have_an_account": "¿Ya tiene una cuenta? ",
+  "verification_email": "Se ha enviado un mensaje de verificación a su correo electrónico.",
+  "cancel": "Cancelar",
+  "resent_email": "Correo electrónico reenviado",
+  "select_language": "Seleccionar idioma",
+  "repeat_password": "Repetir contraseña",
+  "password_match": "La contraseña no coincide",
+  "min_of_six_chars": "Introduzca un mínimo de 6 caracteres.",
+  "valid_email": "Introduzca un correo electrónico válido",
+  "reset_password_send": "Correo electrónico de restablecimiento de contraseña enviado",
+  "receive_email": "Reciba un correo electrónico para\nrestablecer su contraseña."
+}
