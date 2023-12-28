@@ -1,0 +1,26 @@
+#:kivy 1.1.1
+<ControlScreen>:
+    name: "screen_controls"
+
+    MDBoxLayout:
+        MDRectangleFlatButton:
+            text: "SETTINGS"
+            width: root.width*0.5
+            pos_hint: {"top": 1}
+            font_size: 20
+            on_press: root.manager.current="screen_menu"
+
+        MDRectangleFlatButton:
+            text: "CONTROLLER"
+            width: root.width*0.5
+            pos_hint: {"top": 1}
+            font_size: 20
+            on_press: root.manager.current="screen_controls"
+
+    MDBoxLayout:
+        MDIconButton:
+            icon: "logout"
+            size_hint: .0, .1
+            width: root.width*0.5
+            font_size: 20
+            on_press: root.manager.current="screen_login"

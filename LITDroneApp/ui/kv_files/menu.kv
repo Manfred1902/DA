@@ -1,0 +1,42 @@
+#:kivy 1.1.1
+<MenuScreen>:
+    name: "screen_menu"
+
+    MDBoxLayout:
+        MDRectangleFlatButton:
+            text: "SETTINGS"
+            width: root.width*0.5
+            pos_hint: {"top": 1}
+            font_size: 20
+            on_press: root.manager.current="screen_menu"
+
+        MDRectangleFlatButton:
+            text: "CONTROLLER"
+            width: root.width*0.5
+            pos_hint: {"top": 1}
+            font_size: 20
+            on_press: root.manager.current="screen_controls"
+
+        MDScreenManager:
+            MDScreen:
+                MDBoxLayout:
+                    orientation: "vertical"
+                    pos_hint: {"top": 1}
+                    MDTopAppBar:
+                        padding: 5, 5
+                        title: "Life in Third Person"
+                    MDScrollView:
+                        MDList:
+                            id: list_box
+                            padding: 5, 5
+
+    MDBoxLayout:
+        MDIconButton:
+            icon: "logout"
+            size_hint: .0, .1
+            width: root.width*0.5
+            font_size: 20
+            on_press: root.manager.current="screen_login"
+
+
+

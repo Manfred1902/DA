@@ -1,0 +1,10 @@
+#:kivy 1.1.1
+<SettingsScreen>:
+    name: "screen_settings"
+
+    MDBoxLayout:
+        MDRoundFlatButton:
+            text: "BACK"
+            font_size: 12
+            pos_hint: {"center_x": 0.5}
+            on_press: root.manager.current="screen_menu"
