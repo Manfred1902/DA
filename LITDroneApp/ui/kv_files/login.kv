@@ -55,3 +55,82 @@
         Widget:
             size_hint_y: None
             height: 10
+
+<MenuScreen>:
+    name: "screen_menu"
+    MDBoxLayout:
+        MDRectangleFlatButton:
+            text: "AUTO COMMANDS"
+            width: root.width*0.5
+            pos_hint: {"top": 1}
+            font_size: 20
+            on_press: root.manager.current="screen_menu"
+        MDRectangleFlatButton:
+            text: "CONTROLLER"
+            width: root.width*0.5
+            pos_hint: {"top": 1}
+            font_size: 20
+            on_press: root.manager.current="screen_controls"
+
+        MDIconButton:
+            icon: "cog-box"
+            size_hint: .0, .1
+            width: root.width*0.5
+            font_size: 20
+            on_press: root.manager.current="screen_settings"
+        MDIconButton:
+            icon: "logout"
+            size_hint: .0, .1
+            width: root.width*0.5
+            font_size: 20
+            on_press: root.manager.current="screen_login"
+<ControlScreen>:
+    name: "screen_controls"
+
+    MDBoxLayout:
+        MDRectangleFlatButton:
+            text: "AUTO COMMANDS"
+            width: root.width*0.5
+            pos_hint: {"top": 1}
+            font_size: 20
+            on_press: root.manager.current="screen_menu"
+
+        MDRectangleFlatButton:
+            text: "CONTROLLER"
+            width: root.width*0.5
+            pos_hint: {"top": 1}
+            font_size: 20
+            on_press: root.manager.current="screen_controls"
+
+    MDBoxLayout:
+        MDIconButton:
+            icon: "logout"
+            size_hint: .0, .1
+            width: root.width*0.5
+            font_size: 20
+            on_press: root.manager.current="screen_login"
+
+
+<SettingsScreen>:
+    name: "screen_settings"
+
+    MDBoxLayout:
+        MDRoundFlatButton:
+            text: "BACK"
+            font_size: 12
+            pos_hint: {"center_x": 0.5}
+            on_press: root.manager.current="screen_menu"
+
+<Auto-CommandsScreen>:
+    MDScreenManager:
+                MDScreen:
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        pos_hint: {"top": 1}
+                        MDTopAppBar:
+                            padding: 5, 5
+                            title: "Life in Third Person"
+                        MDScrollView:
+                            MDList:
+                                id: list_box
+                                padding: 5, 5

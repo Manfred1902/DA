@@ -8,7 +8,13 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 
 from kivy.core.window import Window
-import csv
+
+from kivymd.uix.screen import MDScreen
+from kivymd.uix.toolbar import MDTopAppBar
+from kivymd.uix.screenmanager import MDScreenManager
+
+
+
 
 
 
@@ -19,7 +25,27 @@ class LoginScreen(Screen):
     pass
 
 class MenuScreen(Screen):
-    pass
+    def on_start(self):
+        sm = MDScreenManager()
+        screen = MDScreen()
+        box = MDBoxLayout(orientation="vertical", spacing=10, padding=10)
+        toolbar = MDTopAppBar(title="My App")
+        panel1 = MDExpansionPanel(
+            icon="language-python", 
+            panel_cls=MDExpansionPanelOneLine(text="Python"), 
+            content=MDLabel(text="This is Python.")
+        )
+        panel2 = MDExpansionPanel(
+            icon="language-java", 
+            panel_cls=MDExpansionPanelOneLine(text="Java"), 
+            content=MDLabel(text="This is Java.")
+        )
+        box.add_widget(toolbar)
+        box.add_widget(panel1)
+        box.add_widget(panel2)
+        screen.add_widget(box)
+        sm.add_widget(screen)
+        return sm
 
 class ControlScreen(Screen):
     pass
@@ -30,6 +56,7 @@ class SettingsScreen(Screen):
 class MainApp(MDApp):
     def build(self):
         Builder.load_file('./kv_files/login.kv')
+
 
         self.theme_cls.primary_palette = "Purple"
         self.theme_cls.theme_style = "Light"
@@ -42,20 +69,8 @@ class MainApp(MDApp):
         sm.add_widget(ControlScreen(name='screen_controls'))
 
         return sm
-    
-    def on_start(self):
-        panel1 = MDExpansionPanel(
-            icon="language-python", 
-            panel_cls=MDExpansionPanelOneLine(text="Python"), 
-            content=MDLabel(text="This is Python!", size_hint_y=None)
-        )
-        panel2 = MDExpansionPanel(
-            icon="language-java", 
-            panel_cls=MDExpansionPanelOneLine(text="Java"), 
-            content=MDLabel(text="This is Java.", size_hint_y=None)
-        )
-        self.root.ids.list_box.add_widget(panel1)
-        self.root.ids.list_box.add_widget(panel2)
+
+
 
     def logger(self):
         
