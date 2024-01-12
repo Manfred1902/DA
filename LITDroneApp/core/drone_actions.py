@@ -423,6 +423,7 @@ def object_detection():
 
     keepRecording = False
     recorder.join()
+    
 
 input = ""
 
@@ -473,3 +474,5 @@ match input:
         video_feed_flying_synchronous
     case "object detection":
         object_detection()
+    case "fly curve":
+        tello.curve_xyz_speed()
