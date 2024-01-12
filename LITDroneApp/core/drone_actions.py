@@ -475,4 +475,5 @@ match input:
     case "object detection":
         object_detection()
     case "fly curve":
+        # needs imput params
         tello.curve_xyz_speed()
