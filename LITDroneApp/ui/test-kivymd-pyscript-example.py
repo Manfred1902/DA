@@ -25,6 +25,7 @@ class MainApp(MDApp):
         )
         box.add_widget(toolbar)
         box.add_widget(panel1)
+        box.add_widget(panel2)
         screen.add_widget(box)
         sm.add_widget(screen)
         return sm

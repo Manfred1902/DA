@@ -11,3 +11,19 @@ MDScreenManager:
                 MDList:
                     id: list_box
                     padding: 5, 5
+
+
+
+
+
+        self.theme_cls.primary_palette = "Purple"
+        self.theme_cls.theme_style = "Light"
+        
+
+        sm = ScreenManager(transition = NoTransition())
+        sm.add_widget(LoginScreen(name='screen_login'))
+        sm.add_widget(MenuScreen(name='screen_menu'))
+        sm.add_widget(SettingsScreen(name='screen_settings'))
+        sm.add_widget(ControlScreen(name='screen_controls'))
+
+        return sm
