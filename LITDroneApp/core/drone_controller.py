@@ -10,7 +10,8 @@ def start():
     take_off_land()
     print("flight succsessful")
 
-
-    
+def rotationTest():
+    send_rc_control_async()
+    print("flight succsessful")
 
     
