@@ -1,0 +1,70 @@
+#:kivy 1.1.1
+#: import utils kivy.utils
+
+<ControllerScreen>:
+    canvas:
+        Color:
+            rgb: utils.get_color_from_hex("#303030")
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    MDFloatLayout:
+        LabelButton:
+            id: automatic_page
+            size_hint_x: 0.5
+            pos_hint: {"center_x": 0.3, "center_y": 0.9}
+            color: utils.get_color_from_hex("#448AFFFF")
+            text: "[b]Auto Commands[/b]"
+            halign: "center"
+            markup: True
+            on_release:
+                app.change_screen("home_screen")
+
+        LabelButton:
+            id: controller_page
+            size_hint_x: 0.5
+            pos_hint: {"center_x": 0.7, "center_y": 0.9}
+            color: utils.get_color_from_hex("#448AFFFF")
+            text: "[b]Controller[/b]"
+            halign: "center"
+            markup: True
+            on_release:
+                app.change_screen("controller_screen")
+
+        MDIconButton:
+            id: logout_btn
+            icon: "logout"
+            size_hint_x: 0.5
+            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+            width: root.width*0.5
+            font_size: 20
+            on_press: root.manager.current="login_screen"
+        
+        MDBoxLayout:
+            orientation: "vertical"
+            pos_hint: {"center_x": 1.2, "center_y": 0.3}
+            size_hint_y: None
+            height: self.minimum_height
+
+            UpBtn:
+                id: up_btn
+                #icon: "pan-up"
+                text: "Up Button"
+                background_color: (1, 1, 0, 1)
+                size_hint_x: None
+                size_hint_y: None
+                width: root.width*0.2
+                on_press: app.root.on_touch_down(self)
+                on_release: app.root.on_touch_up(self)
+
+            DownBtn:
+                id: down_btn
+                #icon: "pan-up"
+                text: "Down Button"
+                background_color: (1, 1, 0, 1)
+                size_hint_x: None
+                size_hint_y: None
+                width: root.width*0.2
+                on_press: app.root.on_touch_down(self)
+                on_release: app.root.on_touch_up(self)

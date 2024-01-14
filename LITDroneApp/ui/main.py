@@ -13,10 +13,12 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.toolbar import MDTopAppBar
 from kivymd.uix.screenmanager import MDScreenManager
 
+from kivy.uix.button import Button
+from kivy.input.motionevent import MotionEvent
 
+from __init__ import giveNumOne
 
-
-
+import asyncio
 
 
 Window.clearcolor = 1,1,1,1 
@@ -48,7 +50,12 @@ class MenuScreen(Screen):
         return sm
 
 class ControlScreen(Screen):
-    pass
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.add_widget(UpBtn(text='Active Button', on_press=self.on_press))
+
+    def on_press(self, instance):
+        print("Button is being pressed")
 
 class SettingsScreen(Screen):
     pass
@@ -56,6 +63,7 @@ class SettingsScreen(Screen):
 class MainApp(MDApp):
     def build(self):
         Builder.load_file('./kv_files/login.kv')
+        
 
 
         self.theme_cls.primary_palette = "Purple"
@@ -79,5 +87,22 @@ class MainApp(MDApp):
 	#	self.root.ids.welcome_label.text = "WELCOME"		
 	#	self.root.ids.user.text = ""		
 	#	self.root.ids.password.text = ""
+
+
+
+class UpBtn(Button):
+    def on_touch_down(self, touch):
+        if self.collide_point(*touch.pos):
+            self.background_color = [1, 0, 0, 1]  # Change the background color to red
+            giveNumOne(1) # <-- hier methode für input übergabe
+            self.dispatch('on_press')
+        return True
+
+    def on_touch_up(self, touch):
+        if self.collide_point(*touch.pos):
+            self.background_color = [1, 1, 1, 1]  # Change the background color back to white
+            giveNumOne(0) # <-- hier methode für input übergabe
+            self.dispatch('on_release')
+        return True
 
 MainApp().run()

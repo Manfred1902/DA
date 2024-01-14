@@ -36,3 +36,17 @@
             width: root.width*0.5
             font_size: 20
             on_press: root.manager.current="screen_login"
+
+<Auto-CommandsScreen>:
+    MDScreenManager:
+                MDScreen:
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        pos_hint: {"top": 1}
+                        MDTopAppBar:
+                            padding: 5, 5
+                            title: "Life in Third Person"
+                        MDScrollView:
+                            MDList:
+                                id: list_box
+                                padding: 5, 5

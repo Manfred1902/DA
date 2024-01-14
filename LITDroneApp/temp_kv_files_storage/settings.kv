@@ -1,0 +1,19 @@
+#:kivy 1.1.1
+#: import utils kivy.utils
+
+<SettingsScreen>:
+    canvas:
+        Color:
+            rgb: utils.get_color_from_hex("#303030")
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    MDFloatLayout:
+        MDRoundFlatButton:
+            pos_hint: {"top": 1 , "left": 1}
+            size_hint: 1,0.2
+            text: "BACK"
+            font_size: 12
+            pos_hint: {"center_x": 0.5}
+            on_press: root.manager.current="home_screen"
