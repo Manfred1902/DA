@@ -27,28 +27,57 @@ from kivymd.uix.expansionpanel import MDExpansionPanel, MDExpansionPanelOneLine,
 from kivymd.uix.boxlayout import MDBoxLayout
 
 
-from core.drone_controller import connection, start
+from core.drone_controller import *
 
 class HomeScreen(MDScreen):
     def conntect_to_drone(self, instance):
-        connection()
+        drone.connection()
         print("Finished")
     
     def takeoff(self, instance):
-        start()
+        drone.start()
+        print("Finished")
+
+    def rotate(self, instance):
+        drone.rotationTest()
+        print("Finished")
+
+    def take_picture(self, instance):
+        drone.take_picture()
+        print("Finished")
+    
+    def diagonal_flight_test_btn(self, instance):
+        drone.diagonalFlightTest()
+        print("Finished")
+
+    def coordination_flight_test(self, instance):
+        drone.coordinationFlightTest()
+        print("Finished")
+
+    def front_flip(self, instance):
+        drone.frontFlip()
+        print("Finished")
+
+    def right_flip(self, instance):
+        drone.rightFlip()
+        print("Finished")
+
+    def left_flip(self, instance):
+        drone.leftFlip()
         print("Finished")
 
 class ControllerScreen(MDScreen):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.add_widget(UpBtn(text='Active Up Button', on_press=self.on_up_btn_press))
-        self.add_widget(DownBtn(text='Active Down Button', on_press=self.on_down_btn_press))
+    pass
+    #def __init__(self, **kwargs):
+        #super().__init__(**kwargs)
+        #self.add_widget(UpBtn(text='Active Up Button', on_press=self.on_up_btn_press))
+        #self.add_widget(DownBtn(text='Active Down Button', on_press=self.on_down_btn_press))
 
-    def on_up_btn_press(self, instance):
-        print("Up is being pressed")
+    #def on_up_btn_press(self, instance):
+    #    print("Up is being pressed")
 
-    def on_down_btn_press(self, instance):
-        print("Down is being pressed")
+    #def on_down_btn_press(self, instance):
+    #    print("Down is being pressed")
 
 class SettingsScreen(MDScreen):
     pass
@@ -86,33 +115,33 @@ class MainApp(MDApp):
     def initFirebase():
         return Firebase()
 
-class UpBtn(Button):
-    def on_touch_down(self, touch):
-        if self.collide_point(*touch.pos):
-            self.background_color = [1, 0, 0, 1]  # Change the background color to red
-            self.dispatch('on_press')
-            return True
-        return super().on_touch_down(touch)
+#class UpBtn(Button):
+#    def on_touch_down(self, touch):
+#        if self.collide_point(*touch.pos):
+#            self.background_color = [1, 0, 0, 1]  # Change the background color to red
+#            self.dispatch('on_press')
+#            return True
+#        return super().on_touch_down(touch)
 
-    def on_touch_up(self, touch):
-        if self.collide_point(*touch.pos):
-            self.background_color = [1, 1, 1, 1]  # Change the background color back to white
-            self.dispatch('on_release')
-            return True
-        return super().on_touch_up(touch)
+#    def on_touch_up(self, touch):
+#        if self.collide_point(*touch.pos):
+#            self.background_color = [1, 1, 1, 1]  # Change the background color back to white
+#            self.dispatch('on_release')
+#            return True
+#        return super().on_touch_up(touch)
 
-class DownBtn(Button):
-    def on_touch_down(self, touch):
-        if self.collide_point(*touch.pos):
-            self.background_color = [1, 0, 0, 1]  # Change the background color to red
-            self.dispatch('on_press')
-        return True
+#class DownBtn(Button):
+#    def on_touch_down(self, touch):
+#        if self.collide_point(*touch.pos):
+#            self.background_color = [1, 0, 0, 1]  # Change the background color to red
+#            self.dispatch('on_press')
+#        return True
 
-    def on_touch_up(self, touch):
-        if self.collide_point(*touch.pos):
-            self.background_color = [1, 1, 1, 1]  # Change the background color back to white
-            self.dispatch('on_release')
-        return True
+#    def on_touch_up(self, touch):
+#        if self.collide_point(*touch.pos):
+#            self.background_color = [1, 1, 1, 1]  # Change the background color back to white
+#            self.dispatch('on_release')
+#        return True
 
 
 if __name__ == "__main__":
