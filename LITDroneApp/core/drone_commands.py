@@ -14,51 +14,49 @@ def take_off_land():
     print("Sleep for 5 seconds")
     time.sleep(5)
 
-def move_up():
+def move_up_down():
     print("Move Up")
     tello.move_up(40)
 
-def move_down():
     print("Move Down")
     tello.move_down(40)
 
-def move_left():
+def move_left_right():
     print("Move Left")
     tello.move_left(40)
 
-def move_right():
     print("Move Right")
     tello.move_right(40)
 
-def move_forward():
+def move_forward_backwards():
     print("Move Forward")
     tello.move_forward(40)
 
-def move_backwards():
     print("Move Backwards")
     tello.move_back(40)
 
-def rotate_cw():
+def rotate_cw_ccw():
     print("Rotate Clockwise")
     tello.rotate_clockwise(90)
 
-def rotate_ccw():
     print("Rotate Counter Clockwise")
     tello.rotate_counter_clockwise(90)
 
-def flip_left():
+def flip_left_right():
     print("Flip left")
     tello.flip_left()
 
-def flipt_right():
+    time.sleep(2)
+
     print("Flip Right")
     tello.flip_right()
 
-def flip_forward():
+def flip_forward_backwards():
     print("Flip forward")
     tello.flip_forward
 
-def flip_backwards():
+    time.sleep(2)
+
     print("Flip backwards")
     tello.flip_back
 
@@ -423,57 +421,3 @@ def object_detection():
 
     keepRecording = False
     recorder.join()
-    
-
-input = ""
-
-match input:
-    case "connect":
-        connect_to_drone()
-    case "takeoff":
-        tello.takeoff()
-    case "land":
-        tello.land()
-    case "move forward":
-        move_forward()
-    case "move backwards":
-        move_backwards()
-    case "move left":
-        move_left()
-    case "move right":
-        move_right()
-    case "move up":
-        move_up()
-    case "move down":
-        move_down()
-    case "rotate clockwise":
-        rotate_cw()
-    case "rotate counter clockwise":
-        rotate_ccw()
-    case "flip left":
-        flip_left()
-    case "flip right":
-        flipt_right()
-    case "flip forward":
-        flip_forward()
-    case "flip backwards":
-        flip_backwards()
-    case "go xyz":
-        go_xyz()
-    case "criss cross":
-        criss_cross()
-    case "send rc control async":
-        send_rc_control_async()
-    case "take picture":
-        take_picture()
-    case "video feed no flying":
-        video_feed_no_flying()
-    case "video feed flying":
-        video_feed_flying()
-    case "video feed flying synchronous":
-        video_feed_flying_synchronous
-    case "object detection":
-        object_detection()
-    case "fly curve":
-        # needs imput params
-        tello.curve_xyz_speed()
