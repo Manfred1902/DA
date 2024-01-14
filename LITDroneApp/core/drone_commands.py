@@ -15,6 +15,7 @@ def take_off_land():
     print("Sleep for 5 seconds")
     tello.takeoff()
     time.sleep(5)
+    tello.land()
 
 def move_up():
     print("Move Up")
@@ -479,4 +480,3 @@ match input:
     case "fly curve":
         # needs imput params
         tello.curve_xyz_speed()
-        beans
