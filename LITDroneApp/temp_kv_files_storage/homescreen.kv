@@ -42,6 +42,26 @@
             markup: True
             on_release:
                 app.change_screen("controller_screen")
+
+        LabelButton:
+            id: connect_drone_btn
+            size_hint_x: 0.5
+            pos_hint: {"center_x": 0.3, "center_y": 0.5}
+            color: utils.get_color_from_hex("#448AFFFF")
+            text: "[b]Connect to Drone[/b]"
+            halign: "center"
+            markup: True
+            on_press: root.conntect_to_drone(self)
+
+        LabelButton:
+            id: takeoff_btn
+            size_hint_x: 0.5
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            color: utils.get_color_from_hex("#448AFFFF")
+            text: "[b]Takeoff[/b]"
+            halign: "center"
+            markup: True
+            on_press: root.takeoff(self)
         
         MDIconButton:
             id: logout_btn
