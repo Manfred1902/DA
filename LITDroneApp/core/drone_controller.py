@@ -1,4 +1,4 @@
-from drone_commands import *
+from .drone_commands import *
 
 def connection():
     try:

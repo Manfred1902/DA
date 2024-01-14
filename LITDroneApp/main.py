@@ -27,16 +27,16 @@ from kivymd.uix.expansionpanel import MDExpansionPanel, MDExpansionPanelOneLine,
 from kivymd.uix.boxlayout import MDBoxLayout
 
 
+from core.drone_controller import connection, start
+
 class HomeScreen(MDScreen):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.expansion_panel = MDExpansionPanel(
-            title='Expansion Panel Title',
-            icon='language-python',
-            content=MDExpansionPanelOneLine(text='Expansion Panel Content'),
-            panel_cls=MDExpansionPanelOneLine
-        )
-        self.add_widget(self.expansion_panel)
+    def conntect_to_drone(self, instance):
+        connection()
+        print("Finished")
+    
+    def takeoff(self, instance):
+        start()
+        print("Finished")
 
 class ControllerScreen(MDScreen):
     def __init__(self, **kwargs):
