@@ -120,6 +120,7 @@ def criss_cross():
     tello.go_xyz_speed(0, -travel_distance_cm, -travel_distance_cm, 20)
     print("sleep")
     time.sleep(0.5)
+    tello.land()
 
 def send_rc_control_async():
     # send_rc_control(left_right_velocity, foward_backward_velocity, up_down_velocity, yaw_velocity)
@@ -190,6 +191,7 @@ def send_rc_control_async():
 
     tello.send_rc_control(0, 0, 0, 0)
     time.sleep(0.5)
+    tello.land()
 
 def take_picture():
     print("Turn Video Stream On")
