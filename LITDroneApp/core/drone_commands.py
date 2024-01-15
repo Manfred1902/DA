@@ -2,7 +2,6 @@ from djitellopy import Tello
 import cv2
 import time
 from threading import Thread
-from utlis import*
 
 ### Basic Tests Commands 
 #class CommandsStrategy:
@@ -429,6 +428,7 @@ def object_detection():
 
     keepRecording = False
     recorder.join()
+<<<<<<< HEAD
 
 def followFace():
     w, h = 360, 240
@@ -459,6 +459,9 @@ def followFace():
         if cv2.waitKey(1) and 0xFF == ord('q'):
             myDrone.land()
             break
+        #kek
+=======
+>>>>>>> parent of 446a0cf (follow face)
     
 
 input = ""
