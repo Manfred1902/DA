@@ -430,7 +430,6 @@ def object_detection():
     keepRecording = False
     recorder.join()
 
-# kek
 def followFace():
     w, h = 360, 240
     pid = [0.5, 0.5, 0]
