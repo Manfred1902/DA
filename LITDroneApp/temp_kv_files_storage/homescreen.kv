@@ -29,8 +29,7 @@
             text: "[b]Auto Commands[/b]"
             halign: "center"
             markup: True
-            on_release:
-                app.change_screen("home_screen")
+            on_press: root.manager.current="home_screen"
 
         LabelButton:
             id: controller_page
@@ -40,29 +39,122 @@
             text: "[b]Controller[/b]"
             halign: "center"
             markup: True
-            on_release:
-                app.change_screen("controller_screen")
-
-        LabelButton:
-            id: connect_drone_btn
-            size_hint_x: 0.5
-            pos_hint: {"center_x": 0.3, "center_y": 0.5}
-            color: utils.get_color_from_hex("#448AFFFF")
-            text: "[b]Connect to Drone[/b]"
-            halign: "center"
-            markup: True
-            on_press: root.conntect_to_drone(self)
-
-        LabelButton:
-            id: takeoff_btn
-            size_hint_x: 0.5
-            pos_hint: {"center_x": 0.5, "center_y": 0.5}
-            color: utils.get_color_from_hex("#448AFFFF")
-            text: "[b]Takeoff[/b]"
-            halign: "center"
-            markup: True
-            on_press: root.takeoff(self)
+            on_press: root.manager.current="controller_screen"
         
+        MDBoxLayout:
+            orientation: "vertical"
+            pos_hint: {"center_x": 1.2, "center_y": 0.5}
+            size_hint_y: None
+            height: self.minimum_height
+        
+            LabelButton:
+                id: connect_drone_btn
+                background_color: (1, 1, 0, 1)
+                size_hint_x: None
+                size_hint_y: None
+                width: root.width*0.2
+                color: utils.get_color_from_hex("#448AFFFF")
+                text: "[b]Connect to Drone[/b]"
+                halign: "center"
+                markup: True
+                on_press: root.conntect_to_drone(self)
+
+            LabelButton:
+                id: takeoff_btn
+                background_color: (1, 1, 0, 1)
+                size_hint_x: None
+                size_hint_y: None
+                width: root.width*0.2
+                color: utils.get_color_from_hex("#448AFFFF")
+                text: "[b]Takeoff[/b]"
+                halign: "center"
+                markup: True
+                on_press: root.takeoff(self)
+
+            LabelButton:
+                id: rotation_test_btn
+                background_color: (1, 1, 0, 1)
+                size_hint_x: None
+                size_hint_y: None
+                width: root.width*0.2
+                color: utils.get_color_from_hex("#448AFFFF")
+                text: "[b]Rotation Test[/b]"
+                halign: "center"
+                markup: True
+                on_press: root.takeoff(self)
+
+            LabelButton:
+                id: diagonal_flight_test_btn
+                background_color: (1, 1, 0, 1)
+                size_hint_x: None
+                size_hint_y: None
+                width: root.width*0.2
+                color: utils.get_color_from_hex("#448AFFFF")
+                text: "[b]Diagonal Flight Test[/b]"
+                halign: "center"
+                markup: True
+                on_press: root.take_picture(self)
+
+            LabelButton:
+                id: coordination_flight_test_btn
+                background_color: (1, 1, 0, 1)
+                size_hint_x: None
+                size_hint_y: None
+                width: root.width*0.2
+                color: utils.get_color_from_hex("#448AFFFF")
+                text: "[b]Coordination Flight Test[/b]"
+                halign: "center"
+                markup: True
+                on_press: root.coordination_flight_test(self)
+
+            LabelButton:
+                id: front_flip_btn
+                background_color: (1, 1, 0, 1)
+                size_hint_x: None
+                size_hint_y: None
+                width: root.width*0.2
+                color: utils.get_color_from_hex("#448AFFFF")
+                text: "[b]Front Flip[/b]"
+                halign: "center"
+                markup: True
+                on_press: root.front_flip(self)
+
+            LabelButton:
+                id: back_flip_btn
+                background_color: (1, 1, 0, 1)
+                size_hint_x: None
+                size_hint_y: None
+                width: root.width*0.2
+                color: utils.get_color_from_hex("#448AFFFF")
+                text: "[b]Back Flip[/b]"
+                halign: "center"
+                markup: True
+                on_press: root.front_flip(self)
+
+            LabelButton:
+                id: right_flip_btn
+                background_color: (1, 1, 0, 1)
+                size_hint_x: None
+                size_hint_y: None
+                width: root.width*0.2
+                color: utils.get_color_from_hex("#448AFFFF")
+                text: "[b]Right Flip[/b]"
+                halign: "center"
+                markup: True
+                on_press: root.right_flip(self)
+
+            LabelButton:
+                id: left_flip_btn
+                background_color: (1, 1, 0, 1)
+                size_hint_x: None
+                size_hint_y: None
+                width: root.width*0.2
+                color: utils.get_color_from_hex("#448AFFFF")
+                text: "[b]Left Flip[/b]"
+                halign: "center"
+                markup: True
+                on_press: root.left_flip(self)
+
         MDIconButton:
             id: logout_btn
             icon: "cog"

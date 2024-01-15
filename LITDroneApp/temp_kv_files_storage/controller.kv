@@ -18,8 +18,7 @@
             text: "[b]Auto Commands[/b]"
             halign: "center"
             markup: True
-            on_release:
-                app.change_screen("home_screen")
+            on_press: root.manager.current="home_screen"
 
         LabelButton:
             id: controller_page
@@ -29,8 +28,7 @@
             text: "[b]Controller[/b]"
             halign: "center"
             markup: True
-            on_release:
-                app.change_screen("controller_screen")
+            on_press: root.manager.current="controller_screen"
 
         MDIconButton:
             id: logout_btn
@@ -47,24 +45,3 @@
             size_hint_y: None
             height: self.minimum_height
 
-            UpBtn:
-                id: up_btn
-                #icon: "pan-up"
-                text: "Up Button"
-                background_color: (1, 1, 0, 1)
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.2
-                on_press: app.root.on_touch_down(self)
-                on_release: app.root.on_touch_up(self)
-
-            DownBtn:
-                id: down_btn
-                #icon: "pan-up"
-                text: "Down Button"
-                background_color: (1, 1, 0, 1)
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.2
-                on_press: app.root.on_touch_down(self)
-                on_release: app.root.on_touch_up(self)
