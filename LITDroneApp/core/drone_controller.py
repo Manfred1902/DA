@@ -1,6 +1,8 @@
 from .drone_commands import *
 
 class drone:
+
+    #------------------Basic Tests------------------
     def connection():
         try:
             connect_to_drone()
@@ -8,62 +10,101 @@ class drone:
             print("failed to connect to drone")
 
     def startTest():
-        take_off_land()
-        print("flight succsessful")
+        try:
+            take_off_land()
+            print("flight succsessful")
+        except:
+            print("something went wrong")
 
     def rotationTest():
-        send_rc_control_async()
-        print("flight succsessful")
-    
+        try:
+            send_rc_control_async()
+            print("flight succsessful")
+        except:
+            print("something went wrong")
+           
     def diagonalFlightTest():
-        criss_cross()
-        print("flight succsessful")
-    
+        try:
+            criss_cross()
+            print("flight succsessful")
+        except:
+            print("something went wrong")
+           
     def coordinationFlightTest():
-        go_xyz()
-        print("flight succsessful")
-    
+        try:
+            go_xyz()
+            print("flight succsessful")
+        except:
+            print("something went wrong")
+           
     def frontFlip():
-        flip_forward()
-        print("test succsessful")
-
+        try:
+            flip_forward()
+            print("test succsessful")  
+        except:
+            print("something went wrong")
+        
     def backFlip():
-        flip_backwards()
-        print("test succsessful")
-
+        try:
+            flip_backwards()
+            print("test succsessful")
+        except:
+            print("something went wrong")
+        
     def rightFlip():
-        flipt_right()
-        print("test succsessful")
-
+        try:
+            flipt_right()
+            print("test succsessful")
+        except:
+            print("something went wrong")
+        
     def leftFlip():
-        flip_left()
-        print("test succsessful")
-
+        try:
+            flip_left()
+            print("test succsessful")
+        except:
+            print("something went wrong")
+        
     def leftFlightTest():
-        move_left()
-        print("test succsessful")
-    
+        try:
+            move_left()
+            print("test succsessful")
+        except:
+            print("something went wrong")
+          
     def rightFlightTest():
-        move_right()
-        print("test succsessful")
-
+        try:
+            move_right()
+            print("test succsessful")
+        except:
+            print("something went wrong")
+        
     def forwardFlightTest():
-        move_forward()
-        print("test succsessful")
-
+        try:
+            move_forward()
+            print("test succsessful")
+        except:
+            print("something went wrong")
+        
     def backwardsFlightTest():
-        move_backwards()
-        print("test succsessful")
+        try:
+            move_backwards()
+            print("test succsessful")
+        except:
+            print("something went wrong") 
 
     def rotaionClockwiseTest():
-        rotate_cw()
-        print("test succsessful")
-
+        try:
+            rotate_cw()
+            print("test succsessful")
+        except:
+            print("something went wrong")
+        
     def rotationCounterClockwiseTest():
-        rotate_ccw()
-        print("test succsessful")
-
-
-
-
-    
+        try:
+            rotate_ccw()
+            print("test succsessful")
+        except:
+            print("something went wrong")
+        
+    #------------------Follow Me------------------
