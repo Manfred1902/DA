@@ -459,6 +459,7 @@ def followFace():
         if cv2.waitKey(1) and 0xFF == ord('q'):
             myDrone.land()
             break
+        #kek
     
 
 input = ""
