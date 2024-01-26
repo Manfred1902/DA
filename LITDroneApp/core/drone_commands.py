@@ -462,7 +462,7 @@ def followFace():
         print(info[0][0])
 
         cv2.imshow('Image', img)
-        if cv2.waitKey(1) and 0xFF == ord('q'):
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             myDrone.land()
             break
     
