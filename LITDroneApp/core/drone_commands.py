@@ -2,7 +2,7 @@ from djitellopy import Tello
 import cv2
 import time
 from threading import Thread
-from utlis import*
+from .utlis import *
 
 ### Basic Tests Commands 
 #class CommandsStrategy:
@@ -59,14 +59,18 @@ def flipt_right():
     tello.flip_right()
 
 def flip_forward():
+    tello.takeoff()
+    tello.move_up(20)
     print("Flip forward")
     tello.flip_forward
+    tello.land()
 
 def flip_backwards():
     print("Flip backwards")
     tello.flip_back
 
 def go_xyz():
+    tello.takeoff()
     # tello.go_xyz_speed(x,y,z, speed)
     # x - (+)foward/(-)backwards
     # y - (+)left/(-)right
@@ -86,6 +90,7 @@ def go_xyz():
     # Forward, Right, Up
     print("Go x,y,z: (30,-30,30)")
     tello.go_xyz_speed(30,-30,30, 20)
+    tello.land()
 
 def criss_cross():
     """
@@ -105,6 +110,7 @@ def criss_cross():
     # x - (+)foward/(-)backwards
     # y - (+)left/(-)right
     # z - (+)up/(-)down
+    tello.takeoff()
     tello.go_xyz_speed(0, 0, travel_distance_cm, 20)
     print("sleep")
     time.sleep(0.5)
@@ -129,7 +135,7 @@ def send_rc_control_async():
     # forward_backward_velocity: -100~100( backward / forward )
     # up_down_velocity: -100~100( down / up )
     # yaw_velocity: -100~100 (Counter Clockwise, Clockwise )
-
+    tello.takeoff()
     print("Left")
     tello.send_rc_control(-30, 0, 0, 0)
     print("Return from send_rc_control")

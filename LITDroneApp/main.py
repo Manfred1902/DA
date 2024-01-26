@@ -6,6 +6,9 @@ from kivymd.uix.label import MDLabel
 from kivymd.uix.screen import MDScreen
 
 
+#from kivy.garden.joystick import Joystick
+from kivy.properties import NumericProperty
+
 # to switch to different pages
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 
@@ -35,7 +38,7 @@ class HomeScreen(MDScreen):
         print("Finished")
     
     def takeoff(self, instance):
-        drone.start()
+        drone.startTest()
         print("Finished")
 
     def rotate(self, instance):
@@ -65,9 +68,34 @@ class HomeScreen(MDScreen):
     def left_flip(self, instance):
         drone.leftFlip()
         print("Finished")
+    
+    
+    def start1(self, text_input1):
+        print("Start1 button pressed with text:", text_input1)
+ 
+    def start2(self, text_input2):
+        print("Start2 button pressed with text:", text_input2)
 
 class ControllerScreen(MDScreen):
-    pass
+    pos_hint_top = NumericProperty(0.5)
+    pos_hint_right = NumericProperty(0.5)
+    def build(self):
+        joystick = Joystick(pad_size=0.1, outer_size=0.1, inner_size=0.1, pos_hint={"top":0.8, "right":0.8})
+        self.root.add_widget(joystick)
+        joystick.bind(pad=self.update_coordinates)
+
+    def update_coordinates(self, joystick, pad):
+        x_float = float(str(pad[0])[0:5])
+        y_float  =float(str(pad[1])[0:5])
+        new_pos_hint_top = self.pos_hint_top + y_float
+        new_pos_hint_right = self.pos_hint_right + x_float
+        # hier könnte man jetzt noch out of bounce prüfen
+
+        # Img nicht mit implementiert
+        self.image.pos_hint = {"top":self.pos_hint_top, "right":self.pos_hint_right}
+
+        print("Update fired")
+
     #def __init__(self, **kwargs):
         #super().__init__(**kwargs)
         #self.add_widget(UpBtn(text='Active Up Button', on_press=self.on_up_btn_press))
@@ -115,7 +143,7 @@ class MainApp(MDApp):
     def initFirebase():
         return Firebase()
 
-#class UpBtn(Button):
+#class UpBtn(MDFlatButton):
 #    def on_touch_down(self, touch):
 #        if self.collide_point(*touch.pos):
 #            self.background_color = [1, 0, 0, 1]  # Change the background color to red
@@ -130,7 +158,7 @@ class MainApp(MDApp):
 #            return True
 #        return super().on_touch_up(touch)
 
-#class DownBtn(Button):
+#class DownBtn(MDFlatButton):
 #    def on_touch_down(self, touch):
 #        if self.collide_point(*touch.pos):
 #            self.background_color = [1, 0, 0, 1]  # Change the background color to red

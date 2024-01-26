@@ -30,14 +30,18 @@
             markup: True
             on_press: root.manager.current="controller_screen"
 
-        MDIconButton:
-            id: logout_btn
-            icon: "logout"
-            size_hint_x: 0.5
-            pos_hint: {"center_x": 0.3, "center_y": 0.3}
-            width: root.width*0.5
-            font_size: 20
-            on_press: root.manager.current="login_screen"
+        MDBoxLayout:
+            orientation: "horizontal"
+            pos_hint: {"right": 1.1, "top": 0.3}
+            size_hint_y: None
+            height: self.minimum_height
+
+            MDIconButton:
+                id: logout_btn
+                icon: "logout"
+                width: root.width*0.1
+                font_size: 20
+                on_press: root.manager.current="login_screen"
         
         MDBoxLayout:
             orientation: "vertical"
