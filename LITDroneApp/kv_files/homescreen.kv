@@ -1,7 +1,7 @@
 #:kivy 1.1.1
 #: import utils kivy.utils
 
-<HomeScreen>:        
+<HomeScreen>:
     canvas:
         Color:
             rgb: utils.get_color_from_hex("#303030")
@@ -9,29 +9,39 @@
             size: self.size
             pos: self.pos
 
+
     MDFloatLayout:
+        MDTopAppBar:
+            title: "Auto Commands"
+            left_action_items: [["menu", lambda x: app.change_screen("home_screen"), "This is the navigation"]]
+            pos_hint: {"top": 1, "right": 1}
+            right_action_items:
+                [["dots-vertical", lambda x: app.change_screen("controller_screen"), "Switch to Controller"]]
+
         MDLabel:
             text: "[b]Hello[/b]"
             size_hint: 0.8,0.1
             pos_hint: {"top": 0.8 , "right":0.9}
             markup: True
+
         MDLabel:
             id: passing_email
             size_hint: 0.8,0.1
             pos_hint: {"top": 0.75 , "right":0.9}
             markup: True
 
-        LabelButton:
+        MDRoundFlatButton:
             id: automatic_page
             size_hint_x: 0.5
-            pos_hint: {"center_x": 0.3, "center_y": 0.9}
+            set_size: 0.1
+            pos_hint: {"center_x": 0.25, "center_y": 0.8}
             color: utils.get_color_from_hex("#448AFFFF")
             text: "[b]Auto Commands[/b]"
             halign: "center"
             markup: True
             on_press: root.manager.current="home_screen"
 
-        LabelButton:
+        MDRoundFlatButton:
             id: controller_page
             size_hint_x: 0.5
             pos_hint: {"center_x": 0.7, "center_y": 0.9}
@@ -40,14 +50,24 @@
             halign: "center"
             markup: True
             on_press: root.manager.current="controller_screen"
-        
+
+        MDRoundFlatButton:
+            id: homescreen_exp
+            size_hint_x: 0.5
+            pos_hint: {"center_x": 0.6, "center_y": 0.8}
+            color: utils.get_color_from_hex("#448AFFFF")
+            text: "[b]Homescreen Exp[/b]"
+            halign: "center"
+            markup: True
+            on_press: root.manager.current="homescreen_exp"
+            
         MDBoxLayout:
             orientation: "vertical"
             pos_hint: {"center_x": 1.2, "center_y": 0.5}
             size_hint_y: None
             height: self.minimum_height
         
-            LabelButton:
+            MDRoundFlatButton:
                 id: connect_drone_btn
                 background_color: (1, 1, 0, 1)
                 size_hint_x: None
@@ -59,7 +79,7 @@
                 markup: True
                 on_press: root.conntect_to_drone(self)
 
-            LabelButton:
+            MDRoundFlatButton:
                 id: takeoff_btn
                 background_color: (1, 1, 0, 1)
                 size_hint_x: None
@@ -71,7 +91,7 @@
                 markup: True
                 on_press: root.takeoff(self)
 
-            LabelButton:
+            MDRoundFlatButton:
                 id: rotation_test_btn
                 background_color: (1, 1, 0, 1)
                 size_hint_x: None
@@ -83,7 +103,7 @@
                 markup: True
                 on_press: root.rotate(self)
 
-            LabelButton:
+            MDRoundFlatButton:
                 id: diagonal_flight_test_btn
                 background_color: (1, 1, 0, 1)
                 size_hint_x: None
@@ -95,7 +115,7 @@
                 markup: True
                 on_press: root.diagonal_flight_test_btn(self)
 
-            LabelButton:
+            MDRoundFlatButton:
                 id: coordination_flight_test_btn
                 background_color: (1, 1, 0, 1)
                 size_hint_x: None
@@ -107,7 +127,7 @@
                 markup: True
                 on_press: root.coordination_flight_test(self)
 
-            LabelButton:
+            MDRoundFlatButton:
                 id: front_flip_btn
                 background_color: (1, 1, 0, 1)
                 size_hint_x: None
@@ -119,7 +139,7 @@
                 markup: True
                 on_press: root.front_flip(self)
 
-            LabelButton:
+            MDRoundFlatButton:
                 id: back_flip_btn
                 background_color: (1, 1, 0, 1)
                 size_hint_x: None
@@ -131,7 +151,7 @@
                 markup: True
                 on_press: root.front_flip(self)
 
-            LabelButton:
+            MDRoundFlatButton:
                 id: right_flip_btn
                 background_color: (1, 1, 0, 1)
                 size_hint_x: None
@@ -143,7 +163,7 @@
                 markup: True
                 on_press: root.right_flip(self)
 
-            LabelButton:
+            MDRoundFlatButton:
                 id: left_flip_btn
                 background_color: (1, 1, 0, 1)
                 size_hint_x: None

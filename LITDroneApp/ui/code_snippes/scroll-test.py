@@ -20,7 +20,6 @@ KV = '''
 
 
 MDScrollView:
-
     MDGridLayout:
         id: box
         cols: 1
@@ -33,7 +32,7 @@ class Content(MDBoxLayout):
 
 
 class Test(MDApp):
-    def build(self):
+    def on_start(self):
         return Builder.load_string(KV)
 
     def on_start(self):

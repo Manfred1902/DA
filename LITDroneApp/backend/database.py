@@ -1,7 +1,7 @@
 import pyrebase  # pyrebase 4 is needed!
-import re
 from kivy.logger import Logger
 from kivymd.app import MDApp
+from core.drone_commands import *
 
 
 class Firebase:
@@ -21,7 +21,7 @@ class Firebase:
         Logger.info('Firebase: Initialized')
 
     def signup(self, email: str, password_1: str, password_2: str) -> None:
-        if not re.match(password_1, password_2):
+        if not response.match(password_1, password_2):
             Logger.error('Passwords do not match')
             return
 

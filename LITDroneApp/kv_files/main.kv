@@ -1,11 +1,12 @@
 #:kivy 1.1.1
 #: import utils kivy.utils
-#: include temp_kv_files_storage/homescreen.kv
-#: include temp_kv_files_storage/loginscreen.kv
-#: include temp_kv_files_storage/signupscreen.kv
-#: include temp_kv_files_storage/forgotpasswordscreen.kv
-#: include temp_kv_files_storage/controller.kv
-#: include temp_kv_files_storage/settings.kv
+#: include kv_files/homescreen.kv
+#: include kv_files/homescreen_exp.kv
+#: include kv_files/loginscreen.kv
+#: include kv_files/signupscreen.kv
+#: include kv_files/forgotpasswordscreen.kv
+#: include kv_files/controller.kv
+#: include kv_files/settings.kv
 
 GridLayout:
     cols: 1
@@ -30,6 +31,9 @@ GridLayout:
         HomeScreen:
             id: home_screen
             name: "home_screen"
+        HomeScreenExp:
+            id: homescreen_exp
+            name: "homescreen_exp"
         ControllerScreen:
             id: controller_screen
             name: "controller_screen"

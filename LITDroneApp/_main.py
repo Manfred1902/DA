@@ -14,6 +14,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 
 # Database and login proof
 from backend.database import Firebase
+from core.drone_controller import * 
 
 # for create a button with push recogition
 from kivymd.uix.button import MDIconButton
@@ -29,8 +30,9 @@ from kivymd.uix.screenmanager import MDScreenManager
 from kivymd.uix.expansionpanel import MDExpansionPanel, MDExpansionPanelOneLine, MDExpansionPanelThreeLine
 from kivymd.uix.boxlayout import MDBoxLayout
 
-
-from core.drone_controller import *
+class HomeScreenExp(MDScreen):
+    def start2(self):
+        pass
 
 class HomeScreen(MDScreen):
     def conntect_to_drone(self, instance):
@@ -77,35 +79,7 @@ class HomeScreen(MDScreen):
         print("Start2 button pressed with text:", text_input2)
 
 class ControllerScreen(MDScreen):
-    pos_hint_top = NumericProperty(0.5)
-    pos_hint_right = NumericProperty(0.5)
-    def build(self):
-        joystick = Joystick(pad_size=0.1, outer_size=0.1, inner_size=0.1, pos_hint={"top":0.8, "right":0.8})
-        self.root.add_widget(joystick)
-        joystick.bind(pad=self.update_coordinates)
-
-    def update_coordinates(self, joystick, pad):
-        x_float = float(str(pad[0])[0:5])
-        y_float  =float(str(pad[1])[0:5])
-        new_pos_hint_top = self.pos_hint_top + y_float
-        new_pos_hint_right = self.pos_hint_right + x_float
-        # hier könnte man jetzt noch out of bounce prüfen
-
-        # Img nicht mit implementiert
-        self.image.pos_hint = {"top":self.pos_hint_top, "right":self.pos_hint_right}
-
-        print("Update fired")
-
-    #def __init__(self, **kwargs):
-        #super().__init__(**kwargs)
-        #self.add_widget(UpBtn(text='Active Up Button', on_press=self.on_up_btn_press))
-        #self.add_widget(DownBtn(text='Active Down Button', on_press=self.on_down_btn_press))
-
-    #def on_up_btn_press(self, instance):
-    #    print("Up is being pressed")
-
-    #def on_down_btn_press(self, instance):
-    #    print("Down is being pressed")
+    pass
 
 class SettingsScreen(MDScreen):
     pass
@@ -129,7 +103,7 @@ class LabelButton(MDTextButton, MDLabel):
 
 class MainApp(MDApp):
     def build(self):
-        gui = Builder.load_file("temp_kv_files_storage/main.kv")
+        gui = Builder.load_file("kv_files/main.kv")
         # Window.fullscreen = 'auto'
         # Window.borderless = True
         self.db = Firebase()
@@ -142,7 +116,7 @@ class MainApp(MDApp):
     
     def initFirebase():
         return Firebase()
-
+    
 #class UpBtn(MDFlatButton):
 #    def on_touch_down(self, touch):
 #        if self.collide_point(*touch.pos):
