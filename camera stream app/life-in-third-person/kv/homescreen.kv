@@ -1,0 +1,57 @@
+#: import utils kivy.utils
+
+<HomeScreen>:
+    canvas:
+        Color:
+            rgb: utils.get_color_from_hex("#303030")
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    MDFloatLayout:
+        MDLabel:
+            id: passing_email
+            size_hint_x: 0.8
+            pos_hint: {"center_x": 0.5 , "center_y":0.95}
+            halign: "center"
+            markup: True
+
+        MDRaisedButton:
+            id: toggle_videostream
+            text: "Open Video Stream"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {"center_x": 0.6, "center_y": 0.9}
+            on_press: app.tello.toggle_video()
+
+        MDRaisedButton:
+            id: save_picture
+            text: "Save Picture"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {"center_x": 0.85, "center_y": 0.9}
+            on_press: app.tello.save_image()
+
+        MDRaisedButton:
+            id: save_drone_data
+            text: "Save Drone Data"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {"center_x": 0.15, "center_y": 0.9}
+            on_press: app.tello.save_drone_data()
+
+        MDRaisedButton:
+            id: record_video
+            text: "Record Video"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {"center_x": 0.4, "center_y": 0.9}
+            on_press: app.tello.record_video()
+
+        Image:
+            id: video_stream
+            size_hint: None, None
+            size: root.width, root.height
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+            # allow_stretch: True
+            fit_mode: "fill"
