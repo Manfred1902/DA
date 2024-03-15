@@ -22,8 +22,8 @@ class TelloImageApp(App):
         myFrame = self.me.get_frame_read().frame
         image = cv2.resize(myFrame, (360, 240))
         buffer = cv2.flip(image, 0).tobytes()
-        texture = Texture.create(size=(image.shape[1], image.shape[0]), colorfmt='bgr')
-        texture.blit_buffer(buffer, colorfmt='bgr', bufferfmt='ubyte')
+        texture = Texture.create(size=(image.shape[1], image.shape[0]), colorfmt='rgb')
+        texture.blit_buffer(buffer, colorfmt='rgb', bufferfmt='ubyte')
         self.image_widget.texture = texture
         
 
