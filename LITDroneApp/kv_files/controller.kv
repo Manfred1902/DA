@@ -18,51 +18,57 @@
     MDFloatLayout:
         MDTopAppBar:
             title: "Controller"
-            left_action_items: [["menu", lambda x: app.change_screen("home_screen"), "This is the navigation"]]
+            left_action_items: [["arrow-left", lambda x: app.change_screen("home_screen"), "This is the navigation"]]
             pos_hint: {"top": 1, "right": 1}
-            right_action_items:
-                [["dots-vertical", lambda x: app.change_screen("controller_screen"), "Switch to Controller"]]
 
         MDRaisedButton:
             size_hint: 0.15,0.1
             pos_hint: {"top": 0.45 , "right":0.55}
             text: 'Up'
-            on_press: app.on_up_button_press()
+            on_press: root.up(self)
         MDRaisedButton:
             size_hint: 0.15,0.1
             pos_hint: {"top": 0.15 , "right":0.55}
             text: 'Down'
-            on_press: app.on_down_button_press()
+            on_press: root.down(self)
         MDRaisedButton:
             size_hint: 0.15,0.1
             pos_hint: {"top": 0.3 , "right":0.2}
             text: 'Left'
-            on_press: app.on_left_button_press()
+            on_press: root.left(self)
         MDRaisedButton:
             size_hint: 0.15,0.1
             pos_hint: {"top": 0.3 , "right":0.55}
             text: 'Right'
-            on_press: app.on_right_button_press()
+            on_press: root.right(self)
         MDRaisedButton:
             size_hint: 0.15,0.1
             pos_hint: {"top": 0.45 , "right":0.375}
             text: 'Forward'
-            on_press: app.on_forward_button_press()
+            on_press: root.forward(self)
         MDRaisedButton:
             size_hint: 0.15,0.1
             pos_hint: {"top": 0.15 , "right":0.375}
             text: 'Backward'
-            on_press: app.on_backward_button_press()
+            on_press: root.backward(self)
         MDRaisedButton:
             size_hint: 0.15,0.1
             pos_hint: {"top": 0.3 , "right":0.75}
             text: 'Rotate Left'
-            on_press: app.on_connect_button_press()
+            on_press: root.rotateLeft(self)
         MDRaisedButton:
             size_hint: 0.15,0.1
             pos_hint: {"top": 0.3 , "right": 0.95}
             text: 'Rotate Right'
-            on_press: app.on_land_button_press()
+            on_press: root.rotateRight(self)
         MDRaisedButton:
+            size_hint: 0.15,0.1
+            pos_hint: {"top": 0.45 , "right": 0.2}
+            text: 'Connect'
+            on_press: root.connect(self)
+        MDRaisedButton:
+            id: quitBtn
             text: 'Quit'
-            on_press: app.stop()
+            md_bg_color: [0.6, 0.6, 0.6, 1]
+            elevation: 4.5
+            on_press: root.quit()

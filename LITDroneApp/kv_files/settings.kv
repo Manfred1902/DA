@@ -9,11 +9,56 @@
             size: self.size
             pos: self.pos
 
-    MDFloatLayout:
-        MDRoundFlatButton:
-            pos_hint: {"top": 1 , "left": 1}
-            size_hint: 1,0.2
-            text: "BACK"
-            font_size: 12
-            pos_hint: {"center_x": 0.5}
-            on_press: root.manager.current="home_screen"
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Settings"
+            pos_hint: {"top": 1, "right": 1}
+            left_action_items:
+                [["arrow-left", lambda x: app.change_screen("home_screen"), "This is the navigation"]]
+
+        MDFloatLayout:
+            MDGridLayout:
+                id: settings_grid
+                cols: 2
+                adaptive_height: True
+                md_bg_color: app.theme_cls.primary_color
+                adaptive_width: True
+
+                MDRoundFlatButton:
+                    text: "BACK"
+                    font_size: 12
+                    on_press: root.manager.current="home_screen"
+
+                MDRoundFlatButton:
+                    text: "BACK"
+                    font_size: 12
+                    on_press: root.manager.current="home_screen"
+
+                MDRoundFlatButton:
+                    text: "Theme"
+                    font_size: 12
+                    on_press: root.change_theme()
+
+                MDRoundFlatButton:
+                    text: "Language"
+                    font_size: 12
+                    on_press: root.change_language()
+
+                MDRoundFlatButton:
+                    text: "Notifications"
+                    font_size: 12
+                    on_press: root.change_notifications()
+
+                MDRoundFlatButton:
+                    text: "About"
+                    font_size: 12
+                    on_press: root.change_about()
+
+            MDRoundFlatButton:
+                pos_hint: {"top": 1 , "left": 1}
+                size_hint: 0.5,0.15
+                text: "BACK"
+                font_size: 12
+                pos_hint: {"center_x": 0.5}
+                on_press: root.manager.current="home_screen"

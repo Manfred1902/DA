@@ -5,7 +5,6 @@ from kivymd.uix.button import MDTextButton
 from kivymd.uix.label import MDLabel
 from kivymd.uix.screen import MDScreen
 
-
 #from kivy.garden.joystick import Joystick
 from kivy.properties import NumericProperty
 
@@ -29,10 +28,79 @@ from kivymd.uix.toolbar import MDTopAppBar
 from kivymd.uix.screenmanager import MDScreenManager
 from kivymd.uix.expansionpanel import MDExpansionPanel, MDExpansionPanelOneLine, MDExpansionPanelThreeLine
 from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.button import MDFlatButton
+
+# Video
+from djitellopy import tello
+import cv2
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.image import Image
+from kivy.graphics.texture import Texture
+from kivy.clock import Clock
+
+
+class TelloImageApp(App):
+
+    def build(self):
+        me = tello.Tello()
+        me.connect()
+        me.streamoff()
+        me.streamon()
+        layout = BoxLayout(orientation='vertical')
+        self.image_widget = Image()
+        layout.add_widget(self.image_widget)
+        Clock.schedule_interval(self.update_image, 1.0 / 30.0)
+        return layout
+
+    def update_image(self, dt):
+        myFrame = self.me.get_frame_read().frame
+        image = cv2.resize(myFrame, (360, 240))
+        buffer = cv2.flip(image, 0).tobytes()
+        texture = Texture.create(size=(image.shape[1], image.shape[0]), colorfmt='bgr')
+        texture.blit_buffer(buffer, colorfmt='bgr', bufferfmt='ubyte')
+        self.image_widget.texture = texture
+
+class Content(BoxLayout):
+    pass
 
 class HomeScreenExp(MDScreen):
-    def start2(self):
-        pass
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.app = MDApp.get_running_app()
+
+    def startTakeoff(self):
+        self.app.change_screen("controller_screen")
+        #drone.startTest(self.ids["takeoff_height"].text)
+        print('Done')
+
+    def startRotate(self):
+        self.app.change_screen("controller_screen")
+        #drone.rotate(self.ids["rotation_grad"].text, self.ids["rotation_height"].text)
+
+    def startDiagonalFlight(self):
+        self.app.change_screen("controller_screen")
+        #drone.diagonalFlightTest(self.ids["diagonal_flight_length"].text, self.ids["diagonal_flight_height"].text)
+
+    def startCoordinationFlight(self):
+        self.app.change_screen("controller_screen")
+        #drone.coordinationFlightTest(self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+
+    def startFrontFlip(self):
+        self.app.change_screen("controller_screen")
+        #drone.frontFlip(self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+
+    def startBackFlip(self):
+        self.app.change_screen("controller_screen")
+        #drone.backFlip(self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+
+    def startRightFlip(self):
+        self.app.change_screen("controller_screen")
+        #drone.rightFlip(self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+
+    def startLeftFlip(self):
+        self.app.change_screen("controller_screen")
+        #drone.leftFlip(self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
 class HomeScreen(MDScreen):
     def conntect_to_drone(self, instance):
@@ -79,7 +147,43 @@ class HomeScreen(MDScreen):
         print("Start2 button pressed with text:", text_input2)
 
 class ControllerScreen(MDScreen):
-    pass
+
+    def forward(self, instance):
+        print("Finished")
+
+    def backward(self, instance):
+        pass
+
+    def up(self, instance):
+        pass
+
+    def down(self, instance):
+        pass
+
+    def left(self, instance):
+        pass
+
+    def right(self, instance):
+        pass
+
+    def rotateLeft(self, instance):
+        pass
+
+    def rotateRight(self, instance):
+        pass
+
+    def connect(self, instance):
+        video = TelloImageApp(); 
+        video.build()
+
+    def quit(self):
+        if(self.app.isClickable == True):
+            self.app.change_screen("home_screen")
+        else:
+            print("Not allowed")
+
+
+
 
 class SettingsScreen(MDScreen):
     pass
@@ -117,6 +221,7 @@ class MainApp(MDApp):
     def initFirebase():
         return Firebase()
     
+
 #class UpBtn(MDFlatButton):
 #    def on_touch_down(self, touch):
 #        if self.collide_point(*touch.pos):

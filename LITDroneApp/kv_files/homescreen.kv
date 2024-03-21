@@ -2,178 +2,373 @@
 #: import utils kivy.utils
 
 <HomeScreen>:
-    canvas:
-        Color:
-            rgb: utils.get_color_from_hex("#303030")
-        Rectangle:
-            size: self.size
-            pos: self.pos
-
-
-    MDFloatLayout:
+    MDBoxLayout:
+        orientation: 'vertical'
+        
         MDTopAppBar:
             title: "Auto Commands"
-            left_action_items: [["menu", lambda x: app.change_screen("home_screen"), "This is the navigation"]]
             pos_hint: {"top": 1, "right": 1}
             right_action_items:
-                [["dots-vertical", lambda x: app.change_screen("controller_screen"), "Switch to Controller"]]
+                [["arrow-right", lambda x: app.change_screen("controller_screen"), "Switch to Controller"]]
 
-        MDLabel:
-            text: "[b]Hello[/b]"
-            size_hint: 0.8,0.1
-            pos_hint: {"top": 0.8 , "right":0.9}
-            markup: True
-
-        MDLabel:
-            id: passing_email
-            size_hint: 0.8,0.1
-            pos_hint: {"top": 0.75 , "right":0.9}
-            markup: True
-
-        MDRoundFlatButton:
-            id: automatic_page
-            size_hint_x: 0.5
-            set_size: 0.1
-            pos_hint: {"center_x": 0.25, "center_y": 0.8}
-            color: utils.get_color_from_hex("#448AFFFF")
-            text: "[b]Auto Commands[/b]"
-            halign: "center"
-            markup: True
-            on_press: root.manager.current="home_screen"
-
-        MDRoundFlatButton:
-            id: controller_page
-            size_hint_x: 0.5
-            pos_hint: {"center_x": 0.7, "center_y": 0.9}
-            color: utils.get_color_from_hex("#448AFFFF")
-            text: "[b]Controller[/b]"
-            halign: "center"
-            markup: True
-            on_press: root.manager.current="controller_screen"
-
-        MDRoundFlatButton:
-            id: homescreen_exp
-            size_hint_x: 0.5
-            pos_hint: {"center_x": 0.6, "center_y": 0.8}
-            color: utils.get_color_from_hex("#448AFFFF")
-            text: "[b]Homescreen Exp[/b]"
-            halign: "center"
-            markup: True
-            on_press: root.manager.current="homescreen_exp"
-            
         MDBoxLayout:
-            orientation: "vertical"
-            pos_hint: {"center_x": 1.2, "center_y": 0.5}
-            size_hint_y: None
-            height: self.minimum_height
-        
-            MDRoundFlatButton:
-                id: connect_drone_btn
-                background_color: (1, 1, 0, 1)
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.2
-                color: utils.get_color_from_hex("#448AFFFF")
-                text: "[b]Connect to Drone[/b]"
-                halign: "center"
-                markup: True
-                on_press: root.conntect_to_drone(self)
+            orientation: 'vertical'
+            padding: '20dp'
 
-            MDRoundFlatButton:
-                id: takeoff_btn
-                background_color: (1, 1, 0, 1)
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.2
-                color: utils.get_color_from_hex("#448AFFFF")
-                text: "[b]Takeoff[/b]"
-                halign: "center"
-                markup: True
-                on_press: root.takeoff(self)
+            MDScrollView:
+                scroll_wheel_distance: 50
+                MDList:
+                    spacing: '20dp'
 
-            MDRoundFlatButton:
-                id: rotation_test_btn
-                background_color: (1, 1, 0, 1)
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.2
-                color: utils.get_color_from_hex("#448AFFFF")
-                text: "[b]Rotation Test[/b]"
-                halign: "center"
-                markup: True
-                on_press: root.rotate(self)
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        radius: 10
+                        padding: '20dp'
+                        md_bg_color: utils.get_color_from_hex("#DCDCDD")
 
-            MDRoundFlatButton:
-                id: diagonal_flight_test_btn
-                background_color: (1, 1, 0, 1)
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.2
-                color: utils.get_color_from_hex("#448AFFFF")
-                text: "[b]Diagonal Flight Test[/b]"
-                halign: "center"
-                markup: True
-                on_press: root.diagonal_flight_test_btn(self)
+                        MDLabel:
+                            text: "Takeoff"
+                            font_name: "Roboto-Bold"
+                            font_size: "20sp"
+                            pos_hint: {"center_x": 0.556, "center_y": 0.95}
 
-            MDRoundFlatButton:
-                id: coordination_flight_test_btn
-                background_color: (1, 1, 0, 1)
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.2
-                color: utils.get_color_from_hex("#448AFFFF")
-                text: "[b]Coordination Flight Test[/b]"
-                halign: "center"
-                markup: True
-                on_press: root.coordination_flight_test(self)
+                        MDLabel:
+                            text: "Dieser Funktion führt einen Test aus um zu sehen ob die Drohne \nmit der App verbunden ist, nebenbei wird sie kurzfristig gestartet \num zu testen ob sie sich in alle richtungen Bewegen kann."
+                            pos_hint: {"center_x": 0.556, "center_y": 0.65}
 
-            MDRoundFlatButton:
-                id: front_flip_btn
-                background_color: (1, 1, 0, 1)
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.2
-                color: utils.get_color_from_hex("#448AFFFF")
-                text: "[b]Front Flip[/b]"
-                halign: "center"
-                markup: True
-                on_press: root.front_flip(self)
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: takeoff_height
+                            hint_text: "Flughöhe"
+                            size_hint_x: 0.4
+                            text_color: (0.5, 0.5, 0.5, 1)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "human-male-height-variant"
+                            max_text_length: 2
 
-            MDRoundFlatButton:
-                id: back_flip_btn
-                background_color: (1, 1, 0, 1)
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.2
-                color: utils.get_color_from_hex("#448AFFFF")
-                text: "[b]Back Flip[/b]"
-                halign: "center"
-                markup: True
-                on_press: root.front_flip(self)
+                        MDRaisedButton:                        
+                            text: "Start"
+                            height: 0.1 * root.height
+                            width:  0.2 * root.width
+                            md_bg_color: (0.6, 0.6, 0.6, 1)
+                            on_release: root.startTakeoff()
+                            pos_hint: {"center_x": 0.8, "center_y": 0.125}
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        padding: '20dp'
+                        radius: 10
+                        md_bg_color: utils.get_color_from_hex("#DCDCDD")
+                        
+                        MDLabel:
+                            text: "Rotation Test"
+                            font_name: "Roboto-Bold"
+                            font_size: "20sp"
+                            pos_hint: {"center_x": 0.56, "center_y": 0.95}
 
-            MDRoundFlatButton:
-                id: right_flip_btn
-                background_color: (1, 1, 0, 1)
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.2
-                color: utils.get_color_from_hex("#448AFFFF")
-                text: "[b]Right Flip[/b]"
-                halign: "center"
-                markup: True
-                on_press: root.right_flip(self)
+                        MDLabel:
+                            text: "Methode zum Testen ob die Drohne sich in verschiedene Richtungen Rotieren kann."
+                            pos_hint: {"center_x": 0.556, "center_y": 0.75}
 
-            MDRoundFlatButton:
-                id: left_flip_btn
-                background_color: (1, 1, 0, 1)
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.2
-                color: utils.get_color_from_hex("#448AFFFF")
-                text: "[b]Left Flip[/b]"
-                halign: "center"
-                markup: True
-                on_press: root.left_flip(self)
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen zwischen 1-259 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: rotation_grad
+                            hint_text: "Rotations Grad"
+                            size_hint_x: 0.4
+                            text_color: (1, 1, 0.5, 0.6)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "angle-acute"
+                            max_text_length: 3
+
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: rotation_height
+                            hint_text: "Flughöhe"
+                            size_hint_x: 0.4
+                            text_color: (0.5, 0.5, 0.5, 1)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "human-male-height-variant"
+                            max_text_length: 2
+
+                        MDRaisedButton:
+                            text: "Start"
+                            height: 0.1 * root.height
+                            width:  0.2* root.width
+                            md_bg_color: (0.6, 0.6, 0.6, 1)
+                            on_release: root.startRotate()
+                            pos_hint: {"center_x": 0.8, "center_y": 0.125}
+
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        padding: '20dp'
+                        radius: 10
+                        md_bg_color: utils.get_color_from_hex("#DCDCDD")
+
+                        MDLabel:
+                            text: "Diagonal Flight Test"
+                            font_name: "Roboto-Bold"
+                            font_size: "20sp"
+                            pos_hint: {"center_x": 0.556, "center_y": 0.95}
+
+                        MDLabel:
+                            text: "Testet alle Flugrichtungen in die es Fliegen kann, auch genannt (Criss-Cross)."
+                            pos_hint: {"center_x": 0.556, "center_y": 0.65}
+
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: diagonal_flight_length
+                            hint_text: "Koordinate x-y-x"
+                            size_hint_x: 0.4
+                            text_color: (0.5, 0.5, 0.5, 1)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "map-marker-distance"
+                            max_text_length: 2
+
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: diagonal_flight_height
+                            hint_text: "Flughöhe"
+                            size_hint_x: 0.4
+                            text_color: (0.5, 0.5, 0.5, 1)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "human-male-height-variant"
+                            max_text_length: 2
+
+                        MDRaisedButton:
+                            text: "Start"
+                            height: 0.1 * root.height
+                            width:  0.2* root.width
+                            md_bg_color: (0.6, 0.6, 0.6, 1)
+                            on_release: root.startDiagonalFlight()
+                            pos_hint: {"center_x": 0.8, "center_y": 0.125}
+
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        padding: '20dp'
+                        radius: 10
+                        md_bg_color: utils.get_color_from_hex("#DCDCDD")
+
+                        MDLabel:
+                            text: "Coordination Flight Test"
+                            font_name: "Roboto-Bold"
+                            font_size: "20sp"
+                            pos_hint: {"center_x": 0.556, "center_y": 0.95}
+
+                        MDLabel:
+                            text: "Testet alle Flugrichtungen in die es Fliegen kann, anhand von Koordinaten."
+                            pos_hint: {"center_x": 0.556, "center_y": 0.65}
+
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: coordination_cord_xyx
+                            hint_text: "Koordinate x-y-x"
+                            size_hint_x: 0.4
+                            text_color: (0.5, 0.5, 0.5, 1)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "map-marker-distance"
+                            max_text_length: 2
+
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: coordination_height
+                            hint_text: "Flughöhe"
+                            size_hint_x: 0.4
+                            text_color: (0.5, 0.5, 0.5, 1)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "human-male-height-variant"
+                            max_text_length: 2
+
+                        MDRaisedButton:
+                            text: "Start"
+                            height: 0.1 * root.height
+                            width:  0.2* root.width
+                            md_bg_color: (0.6, 0.6, 0.6, 1)
+                            on_release: root.startCoordinationFlight()
+                            pos_hint: {"center_x": 0.8, "center_y": 0.125}
+
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        padding: '20dp'
+                        radius: 10
+                        md_bg_color: utils.get_color_from_hex("#DCDCDD")
+
+                        MDLabel:
+                            text: "Front Flip Test"
+                            font_name: "Roboto-Bold"
+                            font_size: "20sp"
+                            pos_hint: {"center_x": 0.556, "center_y": 0.95}
+
+                        MDLabel:
+                            text: "Testet die Flipfähigkeit der Drone nach vorne."
+                            pos_hint: {"center_x": 0.556, "center_y": 0.65}
+
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: front_flip_height
+                            hint_text: "Flughöhe"
+                            size_hint_x: 0.4
+                            text_color: (0.5, 0.5, 0.5, 1)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "human-male-height-variant"
+                            max_text_length: 2
+
+                        MDRaisedButton:
+                            text: "Start"
+                            height: 0.1 * root.height
+                            width:  0.2* root.width
+                            md_bg_color: (0.6, 0.6, 0.6, 1)
+                            on_release: root.startCoordinationFlight()
+                            pos_hint: {"center_x": 0.8, "center_y": 0.125}
+                            
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        padding: '20dp'
+                        radius: 10
+                        md_bg_color: utils.get_color_from_hex("#DCDCDD")
+
+                        MDLabel:
+                            text: "Back Flip Test"
+                            font_name: "Roboto-Bold"
+                            font_size: "20sp"
+                            pos_hint: {"center_x": 0.556, "center_y": 0.95}
+
+                        MDLabel:
+                            text: "Testet die Flipfähigkeit der Drone nach hinten."
+                            pos_hint: {"center_x": 0.556, "center_y": 0.65}
+
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: back_flip_height
+                            hint_text: "Flughöhe"
+                            size_hint_x: 0.4
+                            text_color: (0.5, 0.5, 0.5, 1)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "human-male-height-variant"
+                            max_text_length: 2
+
+                        MDRaisedButton:
+                            text: "Start"
+                            height: 0.1 * root.height
+                            width:  0.2* root.width
+                            md_bg_color: (0.6, 0.6, 0.6, 1)
+                            on_release: root.startCoordinationFlight()
+                            pos_hint: {"center_x": 0.8, "center_y": 0.125}
+                            
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        padding: '20dp'
+                        radius: 10
+                        md_bg_color: utils.get_color_from_hex("#DCDCDD")
+
+                        MDLabel:
+                            text: "Right Flip Test"
+                            font_name: "Roboto-Bold"
+                            font_size: "20sp"
+                            pos_hint: {"center_x": 0.556, "center_y": 0.95}
+
+                        MDLabel:
+                            text: "Testet die Flipfähigkeit der Drone in die Rechte Richtung."
+                            pos_hint: {"center_x": 0.556, "center_y": 0.65}
+
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: right_flip_height
+                            hint_text: "Flughöhe"
+                            size_hint_x: 0.4
+                            text_color: (0.5, 0.5, 0.5, 1)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "human-male-height-variant"
+                            max_text_length: 2
+
+                        MDRaisedButton:
+                            text: "Start"
+                            height: 0.1 * root.height
+                            width:  0.2* root.width
+                            md_bg_color: (0.6, 0.6, 0.6, 1)
+                            on_release: root.startCoordinationFlight()
+                            pos_hint: {"center_x": 0.8, "center_y": 0.125}
+                            
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        padding: '20dp'
+                        radius: 10
+                        md_bg_color: utils.get_color_from_hex("#DCDCDD")
+
+                        MDLabel:
+                            text: "Left Flip Test"
+                            font_name: "Roboto-Bold"
+                            font_size: "20sp"
+                            pos_hint: {"center_x": 0.556, "center_y": 0.95}
+
+                        MDLabel:
+                            text: "Testet die Flipfähigkeit der Drone in die Linke Richtung."
+                            pos_hint: {"center_x": 0.556, "center_y": 0.65}
+
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: left_flip_height
+                            hint_text: "Flughöhe"
+                            size_hint_x: 0.4
+                            text_color: (0.5, 0.5, 0.5, 1)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "human-male-height-variant"
+                            max_text_length: 2
+
+                        MDRaisedButton:
+                            text: "Start"
+                            height: 0.1 * root.height
+                            width:  0.2* root.width
+                            md_bg_color: (0.6, 0.6, 0.6, 1)
+                            on_release: root.startLeftFlip()
+                            pos_hint: {"center_x": 0.8, "center_y": 0.125}
 
         MDBoxLayout:
             orientation: "horizontal"
@@ -202,3 +397,13 @@
                 halign: "center"
                 markup: True
                 on_press: root.manager.current="login_screen"
+
+            MDRoundFlatButton:
+                id: homescreen_exp
+                size_hint_x: 0.5
+                pos_hint: {"center_x": 0.6, "center_y": 0.8}
+                color: utils.get_color_from_hex("#448AFFFF")
+                text: "[b]Homescreen Exp[/b]"
+                halign: "center"
+                markup: True
+                on_press: root.manager.current="homescreen_exp"
