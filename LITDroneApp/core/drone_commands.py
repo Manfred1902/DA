@@ -20,10 +20,10 @@ class basicTests:
         time.sleep(5)
         tello.land()
 
-    def move_up():
+    def move_up(height):
         tello.takeoff()
         print("Move Up")
-        tello.move_up(40)
+        tello.move_up(height)
         tello.land()
 
     def move_down():
