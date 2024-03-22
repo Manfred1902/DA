@@ -26,6 +26,15 @@ class drone:
         except:
             print("something went wrong")
 
+    def moveUp(self, height = 40):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            basicTests.move_up(height)
+            print("flight succsessful")
+        except:
+            print("something went wrong")
+
     def rotationTest(self):
         try:
             if self.isConnectedToDrone==False:
