@@ -2,7 +2,7 @@ from djitellopy import Tello
 import cv2
 import time
 from threading import Thread
-from utlis import*
+from utlis import *
 
 
 ### Basic Tests Commands 

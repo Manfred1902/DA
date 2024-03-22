@@ -5,3 +5,5 @@ from threading import Thread
 
 tello = Tello()
 
+class manuellTakeover:
+    pass
