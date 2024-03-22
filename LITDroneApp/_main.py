@@ -65,9 +65,16 @@ class Content(BoxLayout):
     pass
 
 class HomeScreenExp(MDScreen):
+    pass
+
+class HomeScreen(MDScreen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.app = MDApp.get_running_app()
+
+    def conntect_to_drone(self, instance):
+        drone.connection()
+        print("Finished")
 
     def startTakeoff(self):
         self.app.change_screen("controller_screen")
@@ -101,49 +108,6 @@ class HomeScreenExp(MDScreen):
         self.app.change_screen("controller_screen")
         drone.leftFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
-class HomeScreen(MDScreen):
-    def conntect_to_drone(self, instance):
-        drone.connection()
-        print("Finished")
-    
-    def takeoff(self, instance):
-        drone.startTest()
-        print("Finished")
-
-    def rotate(self, instance):
-        drone.rotationTest()
-        print("Finished")
-
-    def take_picture(self, instance):
-        drone.take_picture()
-        print("Finished")
-    
-    def diagonal_flight_test_btn(self, instance):
-        drone.diagonalFlightTest()
-        print("Finished")
-
-    def coordination_flight_test(self, instance):
-        drone.coordinationFlightTest()
-        print("Finished")
-
-    def front_flip(self, instance):
-        drone.frontFlip()
-        print("Finished")
-
-    def right_flip(self, instance):
-        drone.rightFlip()
-        print("Finished")
-
-    def left_flip(self, instance):
-        drone.leftFlip()
-        print("Finished")
-    
-    
-    def start1(self, text_input1):
-        print("Start1 button pressed with text:", text_input1)
- 
-    def start2(self, text_input2):
-        print("Start2 button pressed with text:", text_input2)
 
 class ControllerScreen(MDScreen):
 
