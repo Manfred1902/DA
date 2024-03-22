@@ -53,11 +53,11 @@ class drone:
         except:
             print("something went wrong")
            
-    def coordinationFlightTest(self):
+    def coordinationFlightTest(self, x = 30, y = 30, z = 30, cw = 30):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.go_xyz()
+            basicTests.go_xyz(x,y,z,cw)
             print("flight succsessful")
         except:
             print("something went wrong")
