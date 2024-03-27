@@ -1,5 +1,19 @@
 #:kivy 1.1.1
 #: import utils kivy.utils
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: "#e7e4c0"
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    ripple_color: "#c5bdd2"
+    selected_color: "#0c6c4d"
+
+
+<DrawerLabelItem@MDNavigationDrawerItem>
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    focus_behavior: False
+    selected_color: "#4a4939"
+    _no_ripple_effect: True
 
 <HomeScreen>:
     MDBoxLayout:
@@ -8,6 +22,8 @@
         MDTopAppBar:
             title: "Auto Commands"
             pos_hint: {"top": 1, "right": 1}
+            left_action_items:
+                [["menu", lambda x: nav_drawer.set_state("open")]]
             right_action_items:
                 [["arrow-right", lambda x: app.change_screen("controller_screen"), "Switch to Controller"]]
 
@@ -73,7 +89,7 @@
                             pos_hint: {"center_x": 0.56, "center_y": 0.95}
 
                         MDLabel:
-                            text: "Methode zum Testen ob die Drohne sich in verschiedene Richtungen Rotieren kann."
+                            text: "Methode zum Testen von allen Grundfunktionen der Drohne, indem es in alle Richtungen fliegt und rotiert."
                             pos_hint: {"center_x": 0.556, "center_y": 0.75}
 
                         MDTextField:
@@ -179,19 +195,6 @@
                         MDLabel:
                             text: "Testet alle Flugrichtungen in die es Fliegen kann, anhand von Koordinaten."
                             pos_hint: {"center_x": 0.556, "center_y": 0.65}
-
-                        MDTextField:
-                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
-                            helper_text_mode: "on_error"
-                            id: coordination_cord_xyx
-                            hint_text: "Koordinate x-y-x"
-                            size_hint_x: 0.4
-                            text_color: (0.5, 0.5, 0.5, 1)
-                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
-                            multiline: False
-                            input_filter: 'int'
-                            icon_left: "map-marker-distance"
-                            max_text_length: 2
 
                         MDTextField:
                             helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
@@ -407,3 +410,53 @@
                 halign: "center"
                 markup: True
                 on_press: root.manager.current="homescreen_exp"
+
+    MDNavigationDrawer:
+        id: nav_drawer
+        radius: (0, 16, 16, 0)
+        MDNavigationDrawerMenu:
+            MDNavigationDrawerHeader:
+                title: "Menu"
+                title_color: "#4a4939"
+                text: "Control Panel"
+                spacing: "4dp"
+                padding: "12dp", 0, 0, "56dp"
+
+            MDNavigationDrawerLabel:
+                text: "Pages"
+
+            DrawerClickableItem:
+                icon: "home-circle"
+                text_right_color: "#4a4939"
+                text: "Homepage"
+                on_press: root.manager.current="home_screen"
+                on_release: nav_drawer.set_state("close")
+
+            DrawerClickableItem:
+                icon: "information-outline"
+                text: "Informations"
+                on_press: root.manager.current="description_screen"
+                on_release: nav_drawer.set_state("close")
+
+            MDNavigationDrawerDivider:
+
+            MDNavigationDrawerLabel:
+                text: "Account"
+
+            DrawerLabelItem:
+                icon: "cog"
+                text: "Settings"
+                on_press: root.manager.current="settings_screen"
+                on_release: nav_drawer.set_state("close")
+
+            DrawerLabelItem:
+                icon: "logout"
+                text: "Logout"
+                on_press: root.manager.current="login_screen"
+                on_release: nav_drawer.set_state("close")
+
+            DrawerLabelItem:
+                icon: "exit-to-app"
+                text: "Exit"
+                on_press: app.stop()
+                on_release: nav_drawer.set_state("close")
