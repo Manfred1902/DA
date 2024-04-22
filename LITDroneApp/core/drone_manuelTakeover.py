@@ -16,22 +16,22 @@ class manuellTakeover:
         cv2.destroyAllWindows()
 
     def move_up(self):
-        tello.move_up(1)
+        tello.move_up(5)
 
     def move_down(self):
-        tello.move_down(1)
+        tello.move_down(5)
 
     def move_left(self):
-        tello.move_left(1)
+        tello.move_left(5)
 
     def move_right(self):
-        tello.move_right(1)
+        tello.move_right(5)
 
     def move_forward(self):
-        tello.move_forward(1)
+        tello.move_forward(5)
 
     def move_backwards(self):
-        tello.move_back(1)
+        tello.move_back(5)
 
     def move_clockwise(self): 
         tello.rotate_clockwise(1)
