@@ -80,7 +80,6 @@ class HomeScreen(MDScreen):
     def conntect_to_drone(self, instance):
         drone.connection()
         print("Finished")
-        
 
     def startTakeoff(self):
         self.app.change_screen("controller_screen")
