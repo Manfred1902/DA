@@ -14,62 +14,6 @@ class basicChecks:
         time.sleep(5)
         tello.land()
 
-    def takeoff():
-        tello.takeoff()
-        print("Takeoff")
-    
-    def land():
-        tello.land()
-        print("landing")
-
-    def move_up():
-        tello.move_up()
-        print("Move Down")
-
-    def move_down():
-        tello.move_down()
-        print("Move Down")
-  
-    def move_left():
-        print("Move Left")
-        tello.move_left()
-
-    def move_right():
-        print("Move Right")
-        tello.move_right()
-
-    def move_forward():
-        print("Move Forward")
-        tello.move_forward()
-
-    def move_backwards():
-        print("Move Backwards")
-        tello.move_back()
-
-    def rotate_cw():
-        print("Rotate Clockwise")
-        tello.rotate_clockwise()
-
-    def rotate_ccw():
-        print("Rotate Counter Clockwise")
-        tello.rotate_counter_clockwise()
-
-    def flip_left():
-        print("Flip left")
-        tello.flip_left()
-
-    def flipt_right():
-        print("Flip Right")
-        tello.flip_right()
-
-    def flip_forward():
-        print("Flip forward")
-        tello.flip_forward
-
-    def flip_backwards():
-        print("Flip backwards")
-        tello.flip_back
-
     def go_xyz(x,y,z,cw):
         # tello.go_xyz_speed(x,y,z, speed)
         # x - (+)foward/(-)backwards
@@ -465,30 +409,6 @@ class basicChecks:
             tello.takeoff()
         case "land":
             tello.land()
-        case "move forward":
-            move_forward()
-        case "move backwards":
-            move_backwards()
-        case "move left":
-            move_left()
-        case "move right":
-            move_right()
-        case "move up":
-            move_up()
-        case "move down":
-            move_down()
-        case "rotate clockwise":
-            rotate_cw()
-        case "rotate counter clockwise":
-            rotate_ccw()
-        case "flip left":
-            flip_left()
-        case "flip right":
-            flipt_right()
-        case "flip forward":
-            flip_forward()
-        case "flip backwards":
-            flip_backwards()
         case "go xyz":
             go_xyz()
         case "criss cross":
