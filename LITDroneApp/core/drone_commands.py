@@ -4,12 +4,10 @@ import time
 from threading import Thread
 from core.utils import *
 
-
-### Basic Tests Commands 
-#class CommandsStrategy:
+### Basic Checks Commands 
 
 tello = Tello()
-class basicTests:
+class basicChecks:
     def connect_to_drone():
         print("Connect to Tello Drone")
         tello.connect()
@@ -106,7 +104,7 @@ class basicTests:
         # x,y,z are between 20-500, the official documentation states the
         # valid values are from -500-500
         # Forward, Right, Up
-        print("Go x,y,z:  " + x + "," + y + "," + z + "," + cw + ")")
+        print("Go back to position:  " + x + "," + y + "," + z + "," + cw + ")")
         tello.go_xyz_speed(x*-1, y*-1, z*-1, cw*-1)
 
     def criss_cross():

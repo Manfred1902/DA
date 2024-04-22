@@ -1,6 +1,7 @@
 from .drone_commands import *
 from .drone_followMe import *
 from .drone_manuelTakeover import *
+from .drone_wander import *
 from .exceptions import *
 
 class drone:
@@ -9,10 +10,10 @@ class drone:
     def __init__(self):
         self.isConnectedToDrone = False
 
-    #------------------Basic Tests------------------
+    #------------------1st Features: Basic Checks------------------
     async def connection(self):
         try:
-            await basicTests.connect_to_drone()
+            await basicChecks.connect_to_drone()
             self.isConnectedToDrone = True
         except:
             print("failed to connect to drone")
@@ -21,7 +22,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.take_off_land()
+            basicChecks.take_off_land()
             print("flight succsessful")
         except:
             print("something went wrong")
@@ -30,7 +31,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.move_up(height)
+            basicChecks.move_up(height)
             print("flight succsessful")
         except:
             print("something went wrong")
@@ -39,7 +40,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.send_rc_control_async()
+            basicChecks.send_rc_control_async()
             print("flight succsessful")
         except:
             print("something went wrong")
@@ -48,7 +49,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.criss_cross()
+            basicChecks.criss_cross()
             print("flight succsessful")
         except:
             print("something went wrong")
@@ -57,7 +58,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.go_xyz(x,y,z,cw)
+            basicChecks.go_xyz(x,y,z,cw)
             print("flight succsessful")
         except:
             print("something went wrong")
@@ -66,7 +67,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.flip_forward()
+            basicChecks.flip_forward()
             print("test succsessful")  
         except:
             print("something went wrong")
@@ -75,7 +76,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.flip_backwards()
+            basicChecks.flip_backwards()
             print("test succsessful")
         except:
             print("something went wrong")
@@ -84,7 +85,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.flipt_right()
+            basicChecks.flipt_right()
             print("test succsessful")
         except:
             print("something went wrong")
@@ -93,7 +94,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.flip_left()
+            basicChecks.flip_left()
             print("test succsessful")
         except:
             print("something went wrong")
@@ -102,7 +103,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.move_left()
+            basicChecks.move_left()
             print("test succsessful")
         except:
             print("something went wrong")
@@ -111,7 +112,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.move_right()
+            basicChecks.move_right()
             print("test succsessful")
         except:
             print("something went wrong")
@@ -120,7 +121,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.move_forward()
+            basicChecks.move_forward()
             print("test succsessful")
         except:
             print("something went wrong")
@@ -129,7 +130,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.move_backwards()
+            basicChecks.move_backwards()
             print("test succsessful")
         except:
             print("something went wrong") 
@@ -138,7 +139,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.rotate_cw()
+            basicChecks.rotate_cw()
             print("test succsessful")
         except:
             print("something went wrong")
@@ -147,7 +148,7 @@ class drone:
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicTests.rotate_ccw()
+            basicChecks.rotate_ccw()
             print("test succsessful")
         except:
             print("something went wrong")
