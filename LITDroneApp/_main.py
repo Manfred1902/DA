@@ -83,19 +83,19 @@ class HomeScreen(MDScreen):
 
     def startTakeoff(self):
         self.app.change_screen("controller_screen")
-        drone.startTest(self, self.ids["takeoff_height"].text)
+        drone.startCheck(self, self.ids["takeoff_height"].text)
 
     def startRotate(self):
         self.app.change_screen("controller_screen")
-        drone.rotationTest(self, self.ids["rotation_grad"].text, self.ids["rotation_height"].text)
+        drone.rotationCheck(self, self.ids["rotation_grad"].text, self.ids["rotation_height"].text)
 
     def startDiagonalFlight(self):
         self.app.change_screen("controller_screen")
-        drone.diagonalFlightTest(self, self.ids["diagonal_flight_length"].text, self.ids["diagonal_flight_height"].text)
+        drone.diagonalFlightCheck(self, self.ids["diagonal_flight_length"].text, self.ids["diagonal_flight_height"].text)
 
     def startCoordinationFlight(self):
         self.app.change_screen("controller_screen")
-        drone.coordinationFlightTest(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+        drone.coordinationFlightCheck(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
     def startFrontFlip(self):
         self.app.change_screen("controller_screen")
