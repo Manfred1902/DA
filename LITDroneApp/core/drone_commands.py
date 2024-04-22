@@ -9,7 +9,8 @@ from core.utils import *
 tello = Tello()
 class basicChecks:
     def take_off_land(height):
-        tello.takeoff(height)
+        tello.takeoff()
+        tello.move_up(height)
         print("Sleep for 5 seconds")
         time.sleep(5)
         tello.land()
@@ -23,36 +24,36 @@ class basicChecks:
         print("landing")
 
     def move_up():
-        tello.move_up()
+        tello.move_up(20)
         print("Move Down")
 
     def move_down():
-        tello.move_down()
+        tello.move_down(20)
         print("Move Down")
   
     def move_left():
         print("Move Left")
-        tello.move_left()
+        tello.move_left(20)
 
     def move_right():
         print("Move Right")
-        tello.move_right()
+        tello.move_right(20)
 
     def move_forward():
         print("Move Forward")
-        tello.move_forward()
+        tello.move_forward(20)
 
     def move_backwards():
         print("Move Backwards")
-        tello.move_back()
+        tello.move_back(20)
 
     def rotate_cw():
         print("Rotate Clockwise")
-        tello.rotate_clockwise()
+        tello.rotate_clockwise(30)
 
     def rotate_ccw():
         print("Rotate Counter Clockwise")
-        tello.rotate_counter_clockwise()
+        tello.rotate_counter_clockwise(30)
 
     def flip_left():
         print("Flip left")

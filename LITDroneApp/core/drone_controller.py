@@ -15,23 +15,27 @@ class drone:
             print("Connect to Tello Drone")
             tello.connect()
             self.isConnectedToDrone = True
+            print("Connected to Tello Drone")
         except:
             print("failed to connect to drone")
 
 #------------------1st Features: Basic Checks------------------
-    def startCheck(self, height = "40"):
+    def startCheck(self, height = 40):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
+            print("before")
             basicChecks.take_off_land(int(height))
             print("flight succsessful")
         except:
             print("something went wrong")
 
     def takeoff(self):
+        print("im here")
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
+            print("im still here")
             basicChecks.takeoff()
             print("flight succsessful")
         except:
@@ -96,6 +100,24 @@ class drone:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
             basicChecks.move_backwards()
+            print("flight succsessful")
+        except:
+            print("something went wrong")
+
+    def rotateRight(self):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            basicChecks.rotate_cw()
+            print("flight succsessful")
+        except:
+            print("something went wrong")
+
+    def rotateLeft(self):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            basicChecks.rotate_ccw()
             print("flight succsessful")
         except:
             print("something went wrong")

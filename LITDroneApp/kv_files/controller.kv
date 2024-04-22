@@ -55,6 +55,17 @@
                 pos_hint: {"center_x": 0.4, "center_y": 0.8}
                 on_press: app.tello.record_video()
 
+
+            MDRaisedButton:
+                size_hint: 0.15,0.1
+                pos_hint: {"top": 0.45 , "right": 0.85}
+                text: 'Start'
+                on_press: root.start(self)
+            MDRaisedButton:
+                size_hint: 0.15,0.1
+                pos_hint: {"top": 0.15 , "right": 0.85}
+                text: 'Land'
+                on_press: root.land(self)
             MDRaisedButton:
                 size_hint: 0.15,0.1
                 pos_hint: {"top": 0.45 , "right":0.55}

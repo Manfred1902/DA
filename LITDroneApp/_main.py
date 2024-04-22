@@ -77,12 +77,13 @@ class HomeScreen(MDScreen):
         super().__init__(**kwargs)
         self.app = MDApp.get_running_app()
 
-    def conntect_to_drone(self, instance):
-        drone.connection()
+    def conntect_to_drone(self):
+        drone.connection(self)
         print("Finished")
 
     def startTakeoff(self):
         self.app.change_screen("controller_screen")
+        drone.connection(self)
         drone.startCheck(self, self.ids["takeoff_height"].text)
 
     def startRotate(self):
@@ -115,34 +116,38 @@ class HomeScreen(MDScreen):
 
 
 class ControllerScreen(MDScreen):
+    def start(self, instance):
+        drone.takeoff(self)
+
+    def land(self, instance):
+        drone.land(self)
 
     def forward(self, instance):
-        print("Finished")
+        drone.forward(self)
 
     def backward(self, instance):
-        pass
+        drone.backwards(self)
 
     def up(self, instance):
-        pass
+        drone.moveUp(self)
 
     def down(self, instance):
-        pass
+        drone.moveDown(self)
 
     def left(self, instance):
-        pass
+        drone.moveLeft(self)
 
     def right(self, instance):
-        pass
+        drone.moveRight(self)
 
     def rotateLeft(self, instance):
-        pass
+        drone.rotateLeft(self)
 
     def rotateRight(self, instance):
-        pass
+        drone.rotateRight(self)
 
     def connect(self, instance):
-        video = TelloImageApp(); 
-        video.build()
+        drone.connection(self)
 
     def quit(self):
         if(self.app.isClickable == True):
