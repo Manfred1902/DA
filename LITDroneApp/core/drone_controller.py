@@ -10,14 +10,15 @@ class drone:
     def __init__(self):
         self.isConnectedToDrone = False
 
-    #------------------1st Features: Basic Checks------------------
-    async def connection(self):
+    def connection(self):
         try:
-            await basicChecks.connect_to_drone()
+            print("Connect to Tello Drone")
+            tello.connect()
             self.isConnectedToDrone = True
         except:
             print("failed to connect to drone")
 
+#------------------1st Features: Basic Checks------------------
     def startTest(self):
         try:
             if self.isConnectedToDrone==False:
