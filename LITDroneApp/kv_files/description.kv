@@ -29,6 +29,98 @@
             orientation: 'vertical'
             padding: '20dp'
 
+            MDScrollView:
+                scroll_wheel_distance: 50
+                MDList:
+                    spacing: '0dp'
+
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        radius: 4, 4, 0, 0
+                        md_bg_color: utils.get_color_from_hex("#FFFFFF")
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            padding: 50
+                            
+                            MDLabel:
+                                text: "Allgemein"
+                                font_name: "Roboto-Bold"
+                                font_size: "20sp"
+                                pos_hint: {"center_x": 0.556}
+
+                            MDLabel:
+                                text: "Diese Arbeit widmet sich der Schnittstelle von Drohnentechnologie und Programmierung, insbesondere im Kontext der Steuerung von Drohnen. Zentral für die Wirksamkeit und den Einsatz von Drohnen sind Controller, die eine präzise Steuerung sowohl in manuellen als auch autonomen Szenarien ermöglichen. In diesem Bereich der Arbeit liegt der Fokus auf der Implementierung einer „offenen und adapierbaren“ Steuerung von Drohnen mithilfe von Python."
+                                pos_hint: {"center_x": 0.556}
+                            
+                            MDLabel:
+                                id: general_info
+
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        radius: 0, 0, 0, 0
+                        md_bg_color: utils.get_color_from_hex("#FFFFFF")
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            padding: 50
+                            
+                            MDLabel:
+                                text: "Anmeldungsseite"
+                                font_name: "Roboto-Bold"
+                                font_size: "20sp"
+                                pos_hint: {"center_x": 0.556}
+
+                            MDLabel:
+                                text: "Beim Starten der App wird man zuerst auf die Anmeldungs-Seite geführt. Die ist dazu da, um den User zu verifizieren und zur Datenspeicherung der Aufgenommenen Flugdaten. Hierfür müssen sich die Benutzer mit einer Email Adresse und einem Passwort anmelden. Falls man sein Passwort vergessen hat, so kann man mit „Passwort vergessen“ ein neues Beantragen, wobei der User per Email sein Passwort zurücksetzten muss. Bevor sich User zum ersten Mal in der Applikation anmelden können, müssen sie sich registrieren. Das funktioniert, indem der Benutzer die Seite anhand des „Sign Up“ Knopfes öffnet und seine Daten für die Registrierung angibt."
+                                pos_hint: {"center_x": 0.556}
+                            
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        radius: 0, 0, 0, 0
+                        md_bg_color: utils.get_color_from_hex("#FFFFFF")
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            padding: 50
+                            
+                            MDLabel:
+                                text: "Steuerungsseite"
+                                font_name: "Roboto-Bold"
+                                font_size: "20sp"
+                                pos_hint: {"center_x": 0.556}
+
+                            MDLabel:
+                                text: "Oben in der Navigations Bar steht als Überschrift, auf welcher Seite sich der User zurzeit befindet. Das Hamburger Menu ist im „Controller“ nicht zugängig, um zu nicht beabsichtigten Knopfdrücken zu führen. Stattdessen befindet sich auf der linken Seite ein Pfeil zum Zurückwechseln auf die Hauptseite. Zur Steuerung der Drohne sind die Knöpfe extra groß für die erleichterte Eingabe und in einer Joystickartigen Orientierung platziert, für ein intuitives Benutzererlebnis."
+                                pos_hint: {"center_x": 0.556}
+
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        radius: 0, 0, 4, 4
+                        md_bg_color: utils.get_color_from_hex("#FFFFFF")
+
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            padding: 50
+                            
+                            MDLabel:
+                                text: "Navigation Drawer Seite"
+                                font_name: "Roboto-Bold"
+                                font_size: "20sp"
+                                pos_hint: {"center_x": 0.556}
+
+                            MDLabel:
+                                text: "Der Navigation Drawer steht auf fast allen Seiten zur Verfügung und ist per Knopfdruck in dem Hamburger Menu erreichbar, welches sich auf der linken Seite befindet und einen kleinen Teil der Seite beansprucht. Durch dieses Menü lässt es sich einfach zwischen den verschieden Seiten hin und her wechseln. Dieses Übersichtliche Design enthält eine Verlinkung zu der Hauptseite, Steuerungsseite, einer Informationsseite und der Einstellungsseite. Zudem verfügt sie auch noch über zwei Knöpfen, mit denen man sich entweder ausloggen oder die App schließen kann."
+                                pos_hint: {"center_x": 0.556}
+
     MDNavigationDrawer:
         id: nav_drawer
         radius: (0, 16, 16, 0)
@@ -51,8 +143,14 @@
                 on_release: nav_drawer.set_state("close")
 
             DrawerClickableItem:
+                icon: "controller"
+                text: "Controller"
+                on_press: root.manager.current="controller_screen"
+                on_release: nav_drawer.set_state("close")
+
+            DrawerClickableItem:
                 icon: "information-outline"
-                text: "Informations"
+                text: "Information"
                 on_press: root.manager.current="description_screen"
                 on_release: nav_drawer.set_state("close")
 

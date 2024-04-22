@@ -51,7 +51,7 @@
                             pos_hint: {"center_x": 0.556, "center_y": 0.95}
 
                         MDLabel:
-                            text: "Dieser Funktion führt einen Test aus um zu sehen ob die Drohne \nmit der App verbunden ist, nebenbei wird sie kurzfristig gestartet \num zu testen ob sie sich in alle richtungen Bewegen kann."
+                            text: "Diese Funktion führt einen Test aus, um zu sehen, ob die Drohne \nmit der App verbunden und gestartet werden kann. \nBeim Start testet sie die Bewegungen in alle Richtungen."
                             pos_hint: {"center_x": 0.556, "center_y": 0.65}
 
                         MDTextField:
@@ -373,43 +373,15 @@
                             on_release: root.startLeftFlip()
                             pos_hint: {"center_x": 0.8, "center_y": 0.125}
 
-        MDBoxLayout:
-            orientation: "horizontal"
-            pos_hint: {"left": 0.2, "top": 0.3}
-            size_hint_y: None
-            height: self.minimum_height
-
-            MDIconButton:
-                id: settings_btn
-                icon: "cog"
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.1
-                font_size: 20
-                halign: "center"
-                markup: True
-                on_press: root.manager.current="settings_screen"
-
-            MDIconButton:
-                id: logout_btn
-                icon: "logout"
-                size_hint_x: None
-                size_hint_y: None
-                width: root.width*0.1
-                font_size: 20
-                halign: "center"
-                markup: True
-                on_press: root.manager.current="login_screen"
-
-            MDRoundFlatButton:
-                id: homescreen_exp
-                size_hint_x: 0.5
-                pos_hint: {"center_x": 0.6, "center_y": 0.8}
-                color: utils.get_color_from_hex("#448AFFFF")
-                text: "[b]Homescreen Exp[/b]"
-                halign: "center"
-                markup: True
-                on_press: root.manager.current="homescreen_exp"
+#            MDRoundFlatButton:
+#                id: homescreen_exp
+#                size_hint_x: 0.5
+#                pos_hint: {"center_x": 0.6, "center_y": 0.8}
+#                color: utils.get_color_from_hex("#448AFFFF")
+#                text: "[b]Homescreen Exp[/b]"
+#                halign: "center"
+#                markup: True
+#                on_press: root.manager.current="homescreen_exp"
 
     MDNavigationDrawer:
         id: nav_drawer
@@ -433,8 +405,14 @@
                 on_release: nav_drawer.set_state("close")
 
             DrawerClickableItem:
+                icon: "controller"
+                text: "Controller"
+                on_press: root.manager.current="controller_screen"
+                on_release: nav_drawer.set_state("close")
+
+            DrawerClickableItem:
                 icon: "information-outline"
-                text: "Informations"
+                text: "Information"
                 on_press: root.manager.current="description_screen"
                 on_release: nav_drawer.set_state("close")
 

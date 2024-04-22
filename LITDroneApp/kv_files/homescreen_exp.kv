@@ -51,8 +51,14 @@
                 on_release: nav_drawer.set_state("close")
 
             DrawerClickableItem:
+                icon: "controller"
+                text: "Controller"
+                on_press: root.manager.current="controller_screen"
+                on_release: nav_drawer.set_state("close")
+
+            DrawerClickableItem:
                 icon: "information-outline"
-                text: "Informations"
+                text: "Information"
                 on_press: root.manager.current="description_screen"
                 on_release: nav_drawer.set_state("close")
 
