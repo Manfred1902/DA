@@ -82,7 +82,7 @@ class drone:
         except:
             print("something went wrong")
 
-    def forword(self):
+    def forward(self):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
