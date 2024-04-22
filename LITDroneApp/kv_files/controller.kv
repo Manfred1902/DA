@@ -1,12 +1,5 @@
 #:kivy 1.1.1
 #: import utils kivy.utils
-
-#:kivy 1.11.1
-
-#:kivy 1.11.1
-
-#:kivy 1.11.1
-
 <ControllerScreen>:
     canvas:
         Color:
@@ -20,6 +13,46 @@
             title: "Controller"
             left_action_items: [["arrow-left", lambda x: app.change_screen("home_screen"), "This is the navigation"]]
             pos_hint: {"top": 1, "right": 1}
+
+        Image:
+            id: video_stream
+            size_hint: None, None
+            size: 750, 750
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            # allow_stretch: True
+            fit_mode: "fill"
+
+        MDRaisedButton:
+            id: toggle_videostream
+            text: "Open Video Stream"
+            size_hint: None, None
+            size: 100, 50
+            pos_hint: {"center_x": 0.6, "center_y": 0.8}
+            on_press: app.tello.toggle_video()
+
+        MDRaisedButton:
+            id: save_picture
+            text: "Save Picture"
+            size_hint: None, None
+            size: 100, 50
+            pos_hint: {"center_x": 0.85, "center_y": 0.8}
+            on_press: app.tello.save_image()
+
+        MDRaisedButton:
+            id: save_drone_data
+            text: "Save Drone Data"
+            size_hint: None, None
+            size: 100, 50
+            pos_hint: {"center_x": 0.15, "center_y": 0.8}
+            on_press: app.tello.save_drone_data()
+
+        MDRaisedButton:
+            id: record_video
+            text: "Record Video"
+            size_hint: None, None
+            size: 100, 50
+            pos_hint: {"center_x": 0.4, "center_y": 0.8}
+            on_press: app.tello.record_video()
 
         MDRaisedButton:
             size_hint: 0.15,0.1
