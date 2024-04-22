@@ -8,12 +8,8 @@ from core.utils import *
 
 tello = Tello()
 class basicChecks:
-    def connect_to_drone():
-        print("Connect to Tello Drone")
-        tello.connect()
-
-    def take_off_land():
-        tello.takeoff()
+    def take_off_land(height):
+        tello.takeoff(height)
         print("Sleep for 5 seconds")
         time.sleep(5)
         tello.land()
