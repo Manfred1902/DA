@@ -13,7 +13,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 
 # Database and login proof
 from backend.database import Firebase
-from core.drone_controller import * 
+from core.drone_controller import *
+import core.tello
 
 # for create a button with push recogition
 from kivymd.uix.button import MDIconButton
@@ -178,6 +179,7 @@ class MainApp(MDApp):
         # Window.fullscreen = 'auto'
         # Window.borderless = True
         self.db = Firebase()
+        self.tello = core.tello.TelloApp(self.db)
         return gui
 
     def change_screen(self, filename):
