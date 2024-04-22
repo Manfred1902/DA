@@ -7,11 +7,10 @@ tello = Tello()
 class manuellTakeover:
     manuellTakeover: bool
 
-    def stop(self):
-        self.manuellTakeover = False
-        tello.streamoff
-        cv2.destroyWindow('TelloVideo')
-        cv2.destroyAllWindows()
+    def takeoff(self):
+        self.startVideofeed(self)
+        tello.takeoff()
+        print("Takeoff")
 
     async def startVideofeed(self):
         self.manuellTakeover = True
@@ -29,15 +28,16 @@ class manuellTakeover:
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
-    def takeoff(self):
-        self.startVideofeed(self)
-        tello.takeoff()
-        print("Takeoff")
-    
     def land(self):
         self.stop(self)
         tello.land()
         print("Landing")
+
+    def stop(self):
+        self.manuellTakeover = False
+        tello.streamoff
+        cv2.destroyWindow('TelloVideo')
+        cv2.destroyAllWindows()
 
 
     def move_up():
