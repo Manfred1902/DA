@@ -30,6 +30,16 @@ class drone:
         except:
             print("something went wrong")
 
+    def rotationCheck(self, angle = 30, height = 30):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            basicChecks.send_rc_control_async(int(angle),int(height))
+            print("flight succsessful")
+        except:
+            print("something went wrong")
+      
+
     def takeoff(self):
         print("im here")
         try:
@@ -122,16 +132,8 @@ class drone:
         except:
             print("something went wrong")
 
-    def rotationCheck(self):
-        try:
-            if self.isConnectedToDrone==False:
-                raise NotConnectedToDrone("you are not connected to the drone")
-            basicChecks.send_rc_control_async()
-            print("flight succsessful")
-        except:
-            print("something went wrong")
-           
-    def diagonalFlightCheck(self):
+         
+    def diagonalFlightCheck(self, height = 50):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")

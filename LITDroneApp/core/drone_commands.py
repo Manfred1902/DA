@@ -88,7 +88,7 @@ class basicChecks:
         print("Go back to position:  " + x + "," + y + "," + z + "," + cw + ")")
         tello.go_xyz_speed(x*-1, y*-1, z*-1, cw*-1)
 
-    def criss_cross():
+    def criss_cross(height):
         """
         Flight Patter
             2     4
@@ -124,13 +124,13 @@ class basicChecks:
         time.sleep(0.5)
         tello.land()
 
-    def send_rc_control_async():
+    def send_rc_control_async(angle, height):
         # send_rc_control(left_right_velocity, foward_backward_velocity, up_down_velocity, yaw_velocity)
         # left_right_velocity: -100~100(left / right)
         # forward_backward_velocity: -100~100( backward / forward )
         # up_down_velocity: -100~100( down / up )
         # yaw_velocity: -100~100 (Counter Clockwise, Clockwise )
-
+        tello.takeoff()
         print("Left")
         tello.send_rc_control(-30, 0, 0, 0)
         print("Return from send_rc_control")
@@ -156,13 +156,13 @@ class basicChecks:
         time.sleep(0.5)
 
         print("Up")
-        tello.send_rc_control(0, 0, 30, 0)
+        tello.send_rc_control(0, 0, height, 0)
         print("Return from send_rc_control")
         print("Sleep 3 seconds")
         time.sleep(3)
 
         print("Down")
-        tello.send_rc_control(0, 0, -30, 0)
+        tello.send_rc_control(0, 0, -height, 0)
         print("Return from send_rc_control")
         print("Sleep 3 seconds")
         time.sleep(3)
@@ -180,13 +180,13 @@ class basicChecks:
         time.sleep(3)
 
         print("Clockwise")
-        tello.send_rc_control(0, 0, 0, 30)
+        tello.send_rc_control(0, 0, 0, angle)
         print("Return from send_rc_control")
         print("Sleep 3 seconds")
         time.sleep(3)
 
         print("Counter Clockwise")
-        tello.send_rc_control(0, 0, 0, -30)
+        tello.send_rc_control(0, 0, 0, -angle)
         print("Return from send_rc_control")
         print("Sleep 3 seconds")
         time.sleep(3)

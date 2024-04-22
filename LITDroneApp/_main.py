@@ -88,6 +88,7 @@ class HomeScreen(MDScreen):
 
     def startRotate(self):
         self.app.change_screen("controller_screen")
+        drone.connection(self)
         drone.rotationCheck(self, self.ids["rotation_grad"].text, self.ids["rotation_height"].text)
 
     def startDiagonalFlight(self):
