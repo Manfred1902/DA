@@ -14,6 +14,7 @@ class drone:
         try:
             print("Connect to Tello Drone")
             tello.connect()
+            print("Connected to Tello Drone")
             self.isConnectedToDrone = True
         except:
             print("failed to connect to drone")
@@ -29,9 +30,11 @@ class drone:
             print("something went wrong")
 
     def takeoff(self):
+        print("im here")
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
+            print("im still here")
             basicChecks.takeoff()
             print("flight succsessful")
         except:
