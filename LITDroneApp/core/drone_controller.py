@@ -28,11 +28,47 @@ class drone:
         except:
             print("something went wrong")
 
+    def takeoff(self):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            basicChecks.takeoff()
+            print("flight succsessful")
+        except:
+            print("something went wrong")
+
+    def land(self):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            basicChecks.land()
+            print("flight succsessful")
+        except:
+            print("something went wrong")
+
     def moveUp(self):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
             basicChecks.move_up()
+            print("flight succsessful")
+        except:
+            print("something went wrong")
+
+    def forword(self):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            basicChecks.move_forward()
+            print("flight succsessful")
+        except:
+            print("something went wrong")
+
+    def backwards(self):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            basicChecks.move_backwards()
             print("flight succsessful")
         except:
             print("something went wrong")

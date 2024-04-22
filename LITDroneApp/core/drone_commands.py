@@ -14,77 +14,61 @@ class basicChecks:
         time.sleep(5)
         tello.land()
 
-    def move_up(height):
+    def takeoff():
         tello.takeoff()
-        print("Move Up")
-        tello.move_up(height)
+        print("Takeoff")
+    
+    def land():
         tello.land()
+        print("landing")
+
+    def move_up():
+        tello.move_up()
+        print("Move Down")
 
     def move_down():
-        tello.takeoff()
+        tello.move_down()
         print("Move Down")
-        tello.move_down(40)
-        tello.land()
-
+  
     def move_left():
-        tello.takeoff()
         print("Move Left")
-        tello.move_left(40)
-        tello.land()
+        tello.move_left()
 
     def move_right():
-        tello.takeoff()
         print("Move Right")
-        tello.move_right(40)
-        tello.land()
+        tello.move_right()
 
     def move_forward():
-        tello.takeoff()
         print("Move Forward")
-        tello.move_forward(40)
-        tello.land()
+        tello.move_forward()
 
     def move_backwards():
-        tello.takeoff()
         print("Move Backwards")
-        tello.move_back(40)
-        tello.land()
+        tello.move_back()
 
     def rotate_cw():
-        tello.takeoff()
         print("Rotate Clockwise")
-        tello.rotate_clockwise(90)
-        tello.land()
+        tello.rotate_clockwise()
 
     def rotate_ccw():
-        tello.takeoff()
         print("Rotate Counter Clockwise")
-        tello.rotate_counter_clockwise(90)
-        tello.land()
+        tello.rotate_counter_clockwise()
 
     def flip_left():
-        tello.takeoff()
         print("Flip left")
         tello.flip_left()
-        tello.land()
 
     def flipt_right():
-        tello.takeoff()
         print("Flip Right")
         tello.flip_right()
-        tello.land()
 
     def flip_forward():
-        tello.takeoff()
         print("Flip forward")
         tello.flip_forward
-        tello.land()
 
     def flip_backwards():
-        tello.takeoff()
         print("Flip backwards")
         tello.flip_back
-        tello.land()
 
     def go_xyz(x,y,z,cw):
         # tello.go_xyz_speed(x,y,z, speed)
