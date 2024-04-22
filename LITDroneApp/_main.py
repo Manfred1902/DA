@@ -82,35 +82,35 @@ class HomeScreen(MDScreen):
 
     def startTakeoff(self):
         self.app.change_screen("controller_screen")
-        drone.moveUp(self, self.ids["takeoff_height"].text)
+        drone.startTest(self, self.ids["takeoff_height"].text)
 
     def startRotate(self):
         self.app.change_screen("controller_screen")
-        #drone.rotationTest(self, self.ids["rotation_grad"].text, self.ids["rotation_height"].text)
+        drone.rotationTest(self, self.ids["rotation_grad"].text, self.ids["rotation_height"].text)
 
     def startDiagonalFlight(self):
         self.app.change_screen("controller_screen")
-        #drone.diagonalFlightTest(self, self.ids["diagonal_flight_length"].text, self.ids["diagonal_flight_height"].text)
+        drone.diagonalFlightTest(self, self.ids["diagonal_flight_length"].text, self.ids["diagonal_flight_height"].text)
 
     def startCoordinationFlight(self):
         self.app.change_screen("controller_screen")
-        #drone.coordinationFlightTest(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+        drone.coordinationFlightTest(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
     def startFrontFlip(self):
         self.app.change_screen("controller_screen")
-        #drone.frontFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+        drone.frontFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
     def startBackFlip(self):
         self.app.change_screen("controller_screen")
-        #drone.backFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+        drone.backFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
     def startRightFlip(self):
         self.app.change_screen("controller_screen")
-        #drone.rightFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+        drone.rightFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
     def startLeftFlip(self):
         self.app.change_screen("controller_screen")
-        #drone.leftFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+        drone.leftFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
 
 class ControllerScreen(MDScreen):
