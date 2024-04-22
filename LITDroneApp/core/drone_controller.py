@@ -19,16 +19,16 @@ class drone:
             print("failed to connect to drone")
 
 #------------------1st Features: Basic Checks------------------
-    def startTest(self):
+    def startTest(self, height = 40):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicChecks.take_off_land()
+            basicChecks.take_off_land(height)
             print("flight succsessful")
         except:
             print("something went wrong")
 
-    def moveUp(self, height = 40):
+    def moveUp(self):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
@@ -155,4 +155,12 @@ class drone:
             print("something went wrong")
         
     #------------------Follow Me------------------
+    #------------------Manuell Takeover-----------
+    def manuellTakeover(self, movement):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            manuellTakeover.control_drone()
+        except:
+            print("something went wrong")
     

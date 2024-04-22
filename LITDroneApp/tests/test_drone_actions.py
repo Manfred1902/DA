@@ -1,4 +1,4 @@
-from ..core import drone_controller
+from .core import drone_controller
 from core import drone_controller
 
 def main():

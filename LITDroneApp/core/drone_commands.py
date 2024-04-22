@@ -477,8 +477,6 @@ class basicChecks:
     input = ""
 
     match input:
-        case "connect":
-            connect_to_drone()
         case "takeoff":
             tello.takeoff()
         case "land":
