@@ -12,7 +12,7 @@ class manuellTakeover:
         tello.takeoff()
         print("Takeoff")
 
-    async def startVideofeed(self):
+    def startVideofeed(self):
         self.manuellTakeover = True
         tello.streamon()
         frame_read = tello.get_frame_read()
@@ -41,28 +41,28 @@ class manuellTakeover:
 
 
     def move_up():
-        tello.move_up()
+        tello.move_up(5)
         print("Move Up")
 
     def move_down():
-        tello.move_down()
+        tello.move_down(5)
         print("Move Down")
   
     def move_left():
         print("Move Left")
-        tello.move_left()
+        tello.move_left(5)
 
     def move_right():
         print("Move Right")
-        tello.move_right()
+        tello.move_right(5)
 
     def move_forward():
         print("Move Forward")
-        tello.move_forward()
+        tello.move_forward(5)
 
     def move_backwards():
         print("Move Backwards")
-        tello.move_back()
+        tello.move_back(5)
 
     def rotate_cw():
         print("Rotate Clockwise")
@@ -82,11 +82,11 @@ class manuellTakeover:
 
     def flip_forward():
         print("Flip forward")
-        tello.flip_forward
+        tello.flip_forward()
 
     def flip_backwards():
         print("Flip backwards")
-        tello.flip_back    
+        tello.flip_back()
     
 
     

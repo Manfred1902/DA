@@ -59,9 +59,6 @@ class basicChecks:
         print("sleep")
         time.sleep(0.5)
 
-        # x - (+)foward/(-)backwards
-        # y - (+)left/(-)right
-        # z - (+)up/(-)down
         tello.go_xyz_speed(0, -travel_distance_cm, -travel_distance_cm, 20)
         print("sleep")
         time.sleep(0.5)

@@ -186,7 +186,7 @@ class drone:
         except:
             print("something went wrong")
     
-    def rotaionClockwiseCheck(self):
+    def rotaionClockwise(self):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
@@ -195,7 +195,7 @@ class drone:
         except:
             print("something went wrong")
         
-    def rotationCounterClockwiseCheck(self):
+    def rotationCounterClockwise(self):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
