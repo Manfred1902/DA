@@ -56,7 +56,7 @@ class drone:
         except:
             print("something went wrong")
            
-    def frontFlip(self):
+    def frontFlipCheck(self):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
@@ -65,7 +65,7 @@ class drone:
         except:
             print("something went wrong")
         
-    def backFlip(self):
+    def backFlipCheck(self):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
@@ -74,7 +74,7 @@ class drone:
         except:
             print("something went wrong")
         
-    def rightFlip(self):
+    def rightFlipCheck(self):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
@@ -83,7 +83,7 @@ class drone:
         except:
             print("something went wrong")
         
-    def leftFlip(self):
+    def leftFlipCheck(self):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
