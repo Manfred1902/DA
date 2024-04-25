@@ -21,13 +21,13 @@ class TelloApp:
         self.video_stream_active: bool = False
         Logger.info('TelloApp: Initialized')
 
-    def toggle_video(self) -> None:
+    async def toggle_video(self) -> None:
         try:
             if self.video_stream_active:
                 self.tello.streamoff()
                 MDApp.get_running_app().root.ids["controller_screen"].ids["toggle_videostream"].text = 'Start Videostream'
                 if self.clock_event is not None:
-                    self.clock_event.cancel()
+                    await self.clock_event.cancel()
 
                 self.video_stream_active = False
             else:
@@ -36,7 +36,7 @@ class TelloApp:
                 self.video_stream_active = True
 
                 MDApp.get_running_app().root.ids["controller_screen"].ids["toggle_videostream"].text = 'Close Videostream'
-                self.clock_event = Clock.schedule_interval(self.update, 1.0 / 30.0)
+                self.clock_event = await Clock.schedule_interval(self.update, 1.0 / 30.0)
 
         except (Exception,) as e:
             Logger.error(e)
@@ -117,7 +117,7 @@ class TelloApp:
                     self.record = True
                     MDApp.get_running_app().root.ids["controller_screen"].ids["record_video"].text = "Stop Video Recording"
                     size = texture.size
-                    codec = cv2.VideoWriter.fourcc(*'MJPG')  # XVID
+                    codec = cv2.VideoWriter.fourcc(*'MJPG')
                     self.video = cv2.VideoWriter(self.generate_random_filename('.avi'), codec, 30, (size[1], size[0]))
 
         except (Exception,) as e:
