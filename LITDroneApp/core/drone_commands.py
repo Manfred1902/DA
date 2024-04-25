@@ -8,11 +8,87 @@ from core.utils import *
 
 tello = Tello()
 class basicChecks:
-    def take_off_land(height):
-        tello.takeoff(height)
+    def take_off_land(height = 30):
+        tello.takeoff()
+        if(height>20):
+            tello.move_up(height-20)
+        
         print("Sleep for 5 seconds")
         time.sleep(5)
         tello.land()
+
+    def send_rc_control_async(degree = 90, height = 30):
+        # send_rc_control(left_right_velocity, foward_backward_velocity, up_down_velocity, yaw_velocity)
+        # left_right_velocity: -100~100(left / right)
+        # forward_backward_velocity: -100~100( backward / forward )
+        # up_down_velocity: -100~100( down / up )
+        # yaw_velocity: -100~100 (Counter Clockwise, Clockwise )
+        tello.takeoff()
+
+        print("Left")
+        tello.send_rc_control(-30, 0, 0, 0)
+        print("Return from send_rc_control")
+        print("Sleep 4 seconds")
+        time.sleep(4)
+
+        print("Stop")
+        tello.send_rc_control(0, 0, 0, 0)
+        print("Return from send_rc_control")
+        print("Sleep 1/2 seconds")
+        time.sleep(0.5)
+
+        print("Right")
+        tello.send_rc_control(30, 0, 0, 0)
+        print("Return from send_rc_control")
+        print("Sleep 4 seconds")
+        time.sleep(4)
+
+        print("Stop")
+        tello.send_rc_control(0, 0, 0, 0)
+        print("Return from send_rc_control")
+        print("Sleep 1/2 seconds")
+        time.sleep(0.5)
+
+        print("Up")
+        tello.send_rc_control(0, 0, height, 0)
+        print("Return from send_rc_control")
+        print("Sleep 3 seconds")
+        time.sleep(3)
+
+        print("Down")
+        tello.send_rc_control(0, 0, -height, 0)
+        print("Return from send_rc_control")
+        print("Sleep 3 seconds")
+        time.sleep(3)
+
+        print("Forward")
+        tello.send_rc_control(0, 30, 0, 0)
+        print("Return from send_rc_control")
+        print("Sleep 3 seconds")
+        time.sleep(3)
+
+        print("Backwards")
+        tello.send_rc_control(0, -30, 0, 0)
+        print("Return from send_rc_control")
+        print("Sleep 3 seconds")
+        time.sleep(3)
+
+        print("Clockwise")
+        tello.send_rc_control(0, 0, 0, degree)
+        print("Return from send_rc_control")
+        print("Sleep 3 seconds")
+        time.sleep(3)
+
+        print("Counter Clockwise")
+        tello.send_rc_control(0, 0, 0, -degree)
+        print("Return from send_rc_control")
+        print("Sleep 3 seconds")
+        time.sleep(3)
+
+        tello.send_rc_control(0, 0, 0, 0)
+        time.sleep(0.5)
+        tello.land()
+
 
     def go_xyz(x,y,z,cw):
         # tello.go_xyz_speed(x,y,z, speed)
@@ -64,77 +140,36 @@ class basicChecks:
         time.sleep(0.5)
         tello.land()
 
-    def send_rc_control_async():
-        # send_rc_control(left_right_velocity, foward_backward_velocity, up_down_velocity, yaw_velocity)
-        # left_right_velocity: -100~100(left / right)
-        # forward_backward_velocity: -100~100( backward / forward )
-        # up_down_velocity: -100~100( down / up )
-        # yaw_velocity: -100~100 (Counter Clockwise, Clockwise )
 
-        print("Left")
-        tello.send_rc_control(-30, 0, 0, 0)
-        print("Return from send_rc_control")
-        print("Sleep 4 seconds")
-        time.sleep(4)
+    def flip_left(height = 30):
+        tello.takeoff()
+        if(height>20):
+            tello.move_up(height-20)
+        print("Flip left")
+        tello.flip_left()
 
-        print("Stop")
-        tello.send_rc_control(0, 0, 0, 0)
-        print("Return from send_rc_control")
-        print("Sleep 1/2 seconds")
-        time.sleep(0.5)
+    def flipt_right(height = 30):
+        tello.takeoff()
+        if(height>20):
+            tello.move_up(height-20)
+        print("Flip Right")
+        tello.flip_right()
 
-        print("Right")
-        tello.send_rc_control(30, 0, 0, 0)
-        print("Return from send_rc_control")
-        print("Sleep 4 seconds")
-        time.sleep(4)
+    def flip_forward(height = 30):
+        tello.takeoff()
+        if(height>20):
+            tello.move_up(height-20)
+        print("Flip forward")
+        tello.flip_forward()
 
-        print("Stop")
-        tello.send_rc_control(0, 0, 0, 0)
-        print("Return from send_rc_control")
-        print("Sleep 1/2 seconds")
-        time.sleep(0.5)
+    def flip_backwards(height = 30):
+        tello.takeoff()
+        if(height>20):
+            tello.move_up(height-20)
+        print("Flip backwards")
+        tello.flip_back()
 
-        print("Up")
-        tello.send_rc_control(0, 0, 30, 0)
-        print("Return from send_rc_control")
-        print("Sleep 3 seconds")
-        time.sleep(3)
-
-        print("Down")
-        tello.send_rc_control(0, 0, -30, 0)
-        print("Return from send_rc_control")
-        print("Sleep 3 seconds")
-        time.sleep(3)
-
-        print("Forward")
-        tello.send_rc_control(0, 30, 0, 0)
-        print("Return from send_rc_control")
-        print("Sleep 3 seconds")
-        time.sleep(3)
-
-        print("Backwards")
-        tello.send_rc_control(0, -30, 0, 0)
-        print("Return from send_rc_control")
-        print("Sleep 3 seconds")
-        time.sleep(3)
-
-        print("Clockwise")
-        tello.send_rc_control(0, 0, 0, 30)
-        print("Return from send_rc_control")
-        print("Sleep 3 seconds")
-        time.sleep(3)
-
-        print("Counter Clockwise")
-        tello.send_rc_control(0, 0, 0, -30)
-        print("Return from send_rc_control")
-        print("Sleep 3 seconds")
-        time.sleep(3)
-
-        tello.send_rc_control(0, 0, 0, 0)
-        time.sleep(0.5)
-        tello.land()
-
+    
     def take_picture():
         print("Turn Video Stream On")
         tello.streamon()

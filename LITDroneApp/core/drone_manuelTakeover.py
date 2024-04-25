@@ -39,7 +39,6 @@ class manuellTakeover:
         cv2.destroyWindow('TelloVideo')
         cv2.destroyAllWindows()
 
-
     def move_up():
         tello.move_up(5)
         print("Move Up")
@@ -87,9 +86,4 @@ class manuellTakeover:
     def flip_backwards():
         print("Flip backwards")
         tello.flip_back()
-    
-
-    
-
-    
     

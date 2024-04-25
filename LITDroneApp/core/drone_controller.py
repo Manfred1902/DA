@@ -20,20 +20,20 @@ class drone:
             print("failed to connect to drone")
 
 #------------------1st Features: Basic Checks------------------
-    def startCheck(self, height = "40"):
+    def startCheck(self, height):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicChecks.take_off_land(int(height))
+            basicChecks.take_off_land(height)
             print("flight succsessful")
         except:
             print("something went wrong")
 
-    def rotationCheck(self):
+    def rotationCheck(self, degree = 90, height = 40):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicChecks.send_rc_control_async()
+            basicChecks.send_rc_control_async(degree, height)
             print("flight succsessful")
         except:
             print("something went wrong")
@@ -204,3 +204,38 @@ class drone:
         except:
             print("something went wrong")
     
+    def frontFlip(self):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            manuellTakeover.flip_forward()
+            print("test succsessful")  
+        except:
+            print("something went wrong")
+        
+    def backFlip(self):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            manuellTakeover.flip_backwards()
+            print("test succsessful")
+        except:
+            print("something went wrong")
+        
+    def rightFlip(self):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            manuellTakeover.flipt_right()
+            print("test succsessful")
+        except:
+            print("something went wrong")
+        
+    def leftFlip(self):
+        try:
+            if self.isConnectedToDrone==False:
+                raise NotConnectedToDrone("you are not connected to the drone")
+            manuellTakeover.flip_left()
+            print("test succsessful")
+        except:
+            print("something went wrong")
