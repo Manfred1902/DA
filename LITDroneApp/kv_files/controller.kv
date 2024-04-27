@@ -97,6 +97,26 @@
                 on_press: root.rotateRight(self)
             MDRaisedButton:
                 size_hint: 0.15,0.1
+                pos_hint: {"top": 0.3 , "right":0.75}
+                text: 'Rotate Left'
+                on_press: root.rotateLeft(self)
+            MDRaisedButton:
+                size_hint: 0.15,0.1
+                pos_hint: {"top": 0.45 , "right": 0.85}
+                text: 'Start'
+                on_press: root.takeoff(self)            
+            MDRaisedButton:
+                size_hint: 0.15,0.1
+                pos_hint: {"top": 0.15 , "right":0.85}
+                text: 'Land'
+                on_press: root.land(self)
+            MDRaisedButton:
+                size_hint: 0.15,0.1
+                pos_hint: {"top": 0.3 , "right": 0.95}
+                text: 'Rotate Right'
+                on_press: root.rotateRight(self)
+            MDRaisedButton:
+                size_hint: 0.15,0.1
                 pos_hint: {"top": 0.45 , "right": 0.2}
                 text: 'Connect'
                 on_press: root.connect(self)

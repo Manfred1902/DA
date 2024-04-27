@@ -46,25 +46,8 @@ class DescriptionScreen(MDScreen):
 class ContentNavigationDrawer(MDBoxLayout):
     pass
 class TelloImageApp(App):
-
-    def build(self):
-        me = tello.Tello()
-        me.connect()
-        me.streamoff()
-        me.streamon()
-        layout = BoxLayout(orientation='vertical')
-        self.image_widget = Image()
-        layout.add_widget(self.image_widget)
-        Clock.schedule_interval(self.update_image, 1.0 / 30.0)
-        return layout
-
-    def update_image(self, dt):
-        myFrame = self.me.get_frame_read().frame
-        image = cv2.resize(myFrame, (360, 240))
-        buffer = cv2.flip(image, 0).tobytes()
-        texture = Texture.create(size=(image.shape[1], image.shape[0]), colorfmt='bgr')
-        texture.blit_buffer(buffer, colorfmt='bgr', bufferfmt='ubyte')
-        self.image_widget.texture = texture
+    pass
+    
 
 class Content(BoxLayout):
     pass
@@ -83,66 +66,102 @@ class HomeScreen(MDScreen):
 
     def startTakeoff(self):
         self.app.change_screen("controller_screen")
+        print("test")
+        drone.connection(self)
+        print("test2")
         drone.startCheck(self, self.ids["takeoff_height"].text)
 
     def startRotate(self):
         self.app.change_screen("controller_screen")
+        drone.connection(self)
         drone.rotationCheck(self, self.ids["rotation_grad"].text, self.ids["rotation_height"].text)
 
     def startDiagonalFlight(self):
         self.app.change_screen("controller_screen")
+        drone.connection(self)
         drone.diagonalFlightCheck(self, self.ids["diagonal_flight_length"].text, self.ids["diagonal_flight_height"].text)
 
     def startCoordinationFlight(self):
         self.app.change_screen("controller_screen")
+        drone.connection(self)
         drone.coordinationFlightCheck(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
     def startFrontFlip(self):
         self.app.change_screen("controller_screen")
+        drone.connection(self)
         drone.frontFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
     def startBackFlip(self):
         self.app.change_screen("controller_screen")
+        drone.connection(self)
         drone.backFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
     def startRightFlip(self):
         self.app.change_screen("controller_screen")
+        drone.connection(self)
         drone.rightFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
     def startLeftFlip(self):
         self.app.change_screen("controller_screen")
+        drone.connection(self)
         drone.leftFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
 
 
 class ControllerScreen(MDScreen):
+    def takeoff(self, instance):
+        drone.takeoff(self)
+
+    def land(self, instance):
+        drone.land(self)
 
     def forward(self, instance):
-        print("Finished")
+        drone.forward(self)
 
     def backward(self, instance):
-        pass
+       drone.backwards(self)
 
     def up(self, instance):
-        pass
+        drone.moveUp(self)
 
     def down(self, instance):
-        pass
+        drone.moveDown(self)
 
     def left(self, instance):
-        pass
+        drone.moveLeft(self)
 
     def right(self, instance):
-        pass
+        drone.moveRight(self)
 
     def rotateLeft(self, instance):
-        pass
+        drone.rotationCounterClockwise(self)
 
     def rotateRight(self, instance):
-        pass
+        drone.rotaionClockwise(self)
 
     def connect(self, instance):
+        drone.connection(self)
         video = TelloImageApp(); 
         video.build()
+
+    def build(self):
+        me = tello.Tello()
+        me.connect()
+        me.streamoff()
+        me.streamon()
+        layout = BoxLayout(orientation='vertical')
+        self.image_widget = Image()
+        layout.add_widget(self.image_widget)
+        self.ids.video_stream.add_widget(self.image_widget)
+        Clock.schedule_interval(self.update_image, 1.0 / 30.0)
+        return layout
+
+    def update_image(self, dt):
+        myFrame = self.me.get_frame_read().frame
+        image = cv2.resize(myFrame, (360, 240))
+        buffer = cv2.flip(image, 0).tobytes()
+        texture = Texture.create(size=(image.shape[1], image.shape[0]), colorfmt='bgr')
+        texture.blit_buffer(buffer, colorfmt='bgr', bufferfmt='ubyte')
+        self.image_widget.texture = texture
 
     def quit(self):
         if(self.app.isClickable == True):
