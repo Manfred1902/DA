@@ -253,7 +253,7 @@
                             height: 0.1 * root.height
                             width:  0.2* root.width
                             md_bg_color: (0.6, 0.6, 0.6, 1)
-                            on_release: root.startCoordinationFlight()
+                            on_release: root.startFrontFlip()
                             pos_hint: {"center_x": 0.8, "center_y": 0.125}
                             
                     MDCard:
@@ -292,7 +292,7 @@
                             height: 0.1 * root.height
                             width:  0.2* root.width
                             md_bg_color: (0.6, 0.6, 0.6, 1)
-                            on_release: root.startCoordinationFlight()
+                            on_release: root.startBackFlip()
                             pos_hint: {"center_x": 0.8, "center_y": 0.125}
                             
                     MDCard:
@@ -331,7 +331,7 @@
                             height: 0.1 * root.height
                             width:  0.2* root.width
                             md_bg_color: (0.6, 0.6, 0.6, 1)
-                            on_release: root.startCoordinationFlight()
+                            on_release: root.startRightFlip()
                             pos_hint: {"center_x": 0.8, "center_y": 0.125}
                             
                     MDCard:
@@ -371,6 +371,84 @@
                             width:  0.2* root.width
                             md_bg_color: (0.6, 0.6, 0.6, 1)
                             on_release: root.startLeftFlip()
+                            pos_hint: {"center_x": 0.8, "center_y": 0.125}
+
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        padding: '20dp'
+                        radius: 10
+                        md_bg_color: utils.get_color_from_hex("#DCDCDD")
+
+                        MDLabel:
+                            text: "Follow Face"
+                            font_name: "Roboto-Bold"
+                            font_size: "20sp"
+                            pos_hint: {"center_x": 0.556, "center_y": 0.95}
+
+                        MDLabel:
+                            text: "Verfolgt eine Person mittels Gesichtserkennung und verfolgt die naheliegenste Person."
+                            pos_hint: {"center_x": 0.556, "center_y": 0.65}
+
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: follow_face_height
+                            hint_text: "Flughöhe"
+                            size_hint_x: 0.4
+                            text_color: (0.5, 0.5, 0.5, 1)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "human-male-height-variant"
+                            max_text_length: 2
+
+                        MDRaisedButton:
+                            text: "Start"
+                            height: 0.1 * root.height
+                            width:  0.2* root.width
+                            md_bg_color: (0.6, 0.6, 0.6, 1)
+                            on_release: root.followFace()
+                            pos_hint: {"center_x": 0.8, "center_y": 0.125}
+                    
+                    MDCard:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: '300dp'
+                        padding: '20dp'
+                        radius: 10
+                        md_bg_color: utils.get_color_from_hex("#DCDCDD")
+
+                        MDLabel:
+                            text: "Object Detection"
+                            font_name: "Roboto-Bold"
+                            font_size: "20sp"
+                            pos_hint: {"center_x": 0.556, "center_y": 0.95}
+
+                        MDLabel:
+                            text: "Erkennt alle auf dem Frame befindlichen Objetke und klassifiziert sie mit einer aus 70+ vorgefertigten Bezeichnungen, mit denen das YOLOv8 Model trainiert wurde."
+                            pos_hint: {"center_x": 0.556, "center_y": 0.65}
+
+                        MDTextField:
+                            helper_text: "Es sind nur Zahlen von 1-99 erlaubt."
+                            helper_text_mode: "on_error"
+                            id: object_detection_height
+                            hint_text: "Flughöhe"
+                            size_hint_x: 0.4
+                            text_color: (0.5, 0.5, 0.5, 1)
+                            pos_hint: {"center_x": 0.3, "center_y": 0.3}
+                            multiline: False
+                            input_filter: 'int'
+                            icon_left: "human-male-height-variant"
+                            max_text_length: 2
+
+                        MDRaisedButton:
+                            text: "Start"
+                            height: 0.1 * root.height
+                            width:  0.2* root.width
+                            md_bg_color: (0.6, 0.6, 0.6, 1)
+                            on_release: root.objectDetection()
                             pos_hint: {"center_x": 0.8, "center_y": 0.125}
 
 #            MDRoundFlatButton:

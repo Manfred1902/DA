@@ -38,7 +38,7 @@ class drone:
         except:
             print("something went wrong")
            
-    def diagonalFlightCheck(self):
+    def diagonalFlightCheck(self, height):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
@@ -47,20 +47,20 @@ class drone:
         except:
             print("something went wrong")
            
-    def coordinationFlightCheck(self, x = 30, y = 30, z = 30, cw = 30):
+    def coordinationFlightCheck(self, x = 30):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicChecks.go_xyz(x,y,z,cw)
+            basicChecks.go_xyz(x)
             print("flight succsessful")
         except:
             print("something went wrong")
            
-    def frontFlipCheck(self):
+    def frontFlipCheck(self,height):
         try:
             if self.isConnectedToDrone==False:
                 raise NotConnectedToDrone("you are not connected to the drone")
-            basicChecks.flip_forward()
+            basicChecks.flip_forward(height)
             print("test succsessful")  
         except:
             print("something went wrong")

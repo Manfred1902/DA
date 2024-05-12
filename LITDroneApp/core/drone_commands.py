@@ -8,11 +8,9 @@ from core.utils import *
 
 tello = Tello()
 class basicChecks:
-    def take_off_land(height = 30):
+    def take_off_land(height):
         tello.takeoff()
-        if(height>20):
-            tello.move_up(height-20)
-        
+        tello.move_up(int(height)-20)
         print("Sleep for 5 seconds")
         time.sleep(5)
         tello.land()
@@ -50,13 +48,15 @@ class basicChecks:
         time.sleep(0.5)
 
         print("Up")
-        tello.send_rc_control(0, 0, height, 0)
+        #tello.send_rc_control(0, 0, int(height), 0)
+        tello.send_rc_control(0, 0, 30, 0)
         print("Return from send_rc_control")
         print("Sleep 3 seconds")
         time.sleep(3)
 
         print("Down")
-        tello.send_rc_control(0, 0, -height, 0)
+        #tello.send_rc_control(0, 0, int(-height), 0)
+        tello.send_rc_control(0, 0, -30, 0)
         print("Return from send_rc_control")
         print("Sleep 3 seconds")
         time.sleep(3)
@@ -74,13 +74,15 @@ class basicChecks:
         time.sleep(3)
 
         print("Clockwise")
-        tello.send_rc_control(0, 0, 0, degree)
+        #tello.send_rc_control(0, 0, 0, int(degree))
+        tello.send_rc_control(0, 0, 0, 45)
         print("Return from send_rc_control")
         print("Sleep 3 seconds")
         time.sleep(3)
 
         print("Counter Clockwise")
-        tello.send_rc_control(0, 0, 0, -degree)
+        #tello.send_rc_control(0, 0, 0, int(-degree))
+        tello.send_rc_control(0, 0, 0, -45)
         print("Return from send_rc_control")
         print("Sleep 3 seconds")
         time.sleep(3)
@@ -89,23 +91,23 @@ class basicChecks:
         time.sleep(0.5)
         tello.land()
 
-
-    def go_xyz(x,y,z,cw):
+    def go_xyz(x):
         # tello.go_xyz_speed(x,y,z, speed)
         # x - (+)foward/(-)backwards
         # y - (+)left/(-)right
         # z - (+)up/(-)down
 
+        tello.takeoff()
         # Forward, Right, Up, Clockwise
-        print("Go x,y,z,cw: " + x + "," + y + "," + z + "," + cw + ")")
-        tello.go_xyz_speed(x,y,z,cw)
+        print("Go x,y,z,cw: " + x)
+        tello.go_xyz_speed(0,0,30,20)
 
         # Note that the DJITelloPy documentation indicates that the values
         # x,y,z are between 20-500, the official documentation states the
         # valid values are from -500-500
         # Forward, Right, Up
-        print("Go back to position:  " + x + "," + y + "," + z + "," + cw + ")")
-        tello.go_xyz_speed(x*-1, y*-1, z*-1, cw*-1)
+        print("Go back to position:  " + x)
+        tello.go_xyz_speed(0*-1, 0*-1, 30*-1, 20*-1)
 
     def criss_cross():
         """
@@ -125,6 +127,7 @@ class basicChecks:
         # x - (+)foward/(-)backwards
         # y - (+)left/(-)right
         # z - (+)up/(-)down
+        tello.takeoff()
         tello.go_xyz_speed(0, 0, travel_distance_cm, 20)
         print("sleep")
         time.sleep(0.5)
@@ -147,6 +150,7 @@ class basicChecks:
             tello.move_up(height-20)
         print("Flip left")
         tello.flip_left()
+        tello.land()
 
     def flipt_right(height = 30):
         tello.takeoff()
@@ -154,13 +158,17 @@ class basicChecks:
             tello.move_up(height-20)
         print("Flip Right")
         tello.flip_right()
+        tello.land()
 
     def flip_forward(height = 30):
+        print("bin hier")
         tello.takeoff()
-        if(height>20):
-            tello.move_up(height-20)
+        tello.move_up(20)
         print("Flip forward")
+        battery = tello.get_battery()
+        print(battery)
         tello.flip_forward()
+        tello.land()
 
     def flip_backwards(height = 30):
         tello.takeoff()
@@ -168,7 +176,7 @@ class basicChecks:
             tello.move_up(height-20)
         print("Flip backwards")
         tello.flip_back()
-
+        tello.land()
     
     def take_picture():
         print("Turn Video Stream On")

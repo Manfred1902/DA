@@ -87,3 +87,13 @@
             color: utils.get_color_from_hex("#448AFFFF")
             on_release:
                 app.change_screen("signup_screen")
+        
+        LabelButton:
+            size_hint_x: 0.5
+            pos_hint: {"center_x": 0.7, "center_y": 0.5}
+            color: utils.get_color_from_hex("#448AFFFF")
+            text: "[b]Switch to Homescreen[/b]"
+            halign: "center"
+            markup: True
+            on_release:
+                app.change_screen("home_screen")

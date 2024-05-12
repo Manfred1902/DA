@@ -79,32 +79,34 @@ class HomeScreen(MDScreen):
     def startDiagonalFlight(self):
         self.app.change_screen("controller_screen")
         drone.connection(self)
-        drone.diagonalFlightCheck(self, self.ids["diagonal_flight_length"].text, self.ids["diagonal_flight_height"].text)
+        #drone.diagonalFlightCheck(self, self.ids["diagonal_flight_length"].text, self.ids["diagonal_flight_height"].text)
+        drone.diagonalFlightCheck(self, self.ids["diagonal_flight_height"].text)
 
     def startCoordinationFlight(self):
         self.app.change_screen("controller_screen")
         drone.connection(self)
-        drone.coordinationFlightCheck(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+        #drone.coordinationFlightCheck(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+        drone.coordinationFlightCheck(self, self.ids["coordination_height"].text)
 
     def startFrontFlip(self):
         self.app.change_screen("controller_screen")
         drone.connection(self)
-        drone.frontFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+        drone.frontFlipCheck(self, self.ids["front_flip_height"].text)
 
     def startBackFlip(self):
         self.app.change_screen("controller_screen")
         drone.connection(self)
-        drone.backFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+        drone.backFlipCheck(self, self.ids["back_flip_height"].text)
 
     def startRightFlip(self):
         self.app.change_screen("controller_screen")
         drone.connection(self)
-        drone.rightFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+        drone.rightFlipCheck(self, self.ids["right_flip_height"].text)
 
     def startLeftFlip(self):
         self.app.change_screen("controller_screen")
         drone.connection(self)
-        drone.leftFlip(self, self.ids["coordination_cord_xyx"].text, self.ids["coordination_height"].text)
+        drone.leftFlipCheck(self, self.ids["left_flip_height"].text)
 
 
 class ControllerScreen(MDScreen):
