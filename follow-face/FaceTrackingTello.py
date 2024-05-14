@@ -4,7 +4,7 @@ import cv2
 w, h = 360, 240
 pid = [0.5, 0.5, 0]
 pError = 0
-startCounter = 1 # for no Flight 1  - for flight 0
+startCounter = 0 # for no Flight 1  - for flight 0
 
 myDrone = initializeTello()
 
@@ -12,7 +12,7 @@ while True:
     ## Flight
     if startCounter == 0:
         myDrone.takeoff()
-        myDrone.move_up(20) # Input entspricht der Einheit cm
+        myDrone.move_up(80) # Input entspricht der Einheit cm
         # Input: 20 -> 20cm hoch
         # Input Values: 20 - 500
         startCounter = 1
