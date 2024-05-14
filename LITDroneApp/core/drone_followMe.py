@@ -2,15 +2,12 @@ from djitellopy import Tello
 import cv2
 import time
 from threading import Thread
-
-from utils import *
-import cv2
+from .utils import *
 
 w, h = 360, 240
 pid = [0.5, 0.5, 0]
 pError = 0
 startCounter = 0 # for no Flight 1  - for flight 0
-
 myDrone = initializeTello()
 
 while True:
